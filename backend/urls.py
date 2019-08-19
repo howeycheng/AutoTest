@@ -10,5 +10,5 @@ from django.urls import path
 from backend import views
 
 urlpatterns = [
-    path('', views.index),
+    path('testapi', views.testapi, name='testapi'),
 ]
