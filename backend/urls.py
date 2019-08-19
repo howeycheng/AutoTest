@@ -7,7 +7,7 @@
 # @Software: PyCharm
 from django.urls import path
 
-from cases import views
+from backend import views
 
 urlpatterns = [
     path('', views.index),

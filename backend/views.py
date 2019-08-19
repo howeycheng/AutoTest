@@ -16,9 +16,9 @@ def index(request):
     return render(request, template_name='cases/index.html', context={'cases': cases_parent})
 
 
-def scene():
-    s = Scene.objects.root_nodes()
-    print(s)
-
-
-scene()
+# def scene():
+#     s = Scene.objects.root_nodes()
+#     print(s)
+#
+#
+# scene()

@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cases.apps.CasesConfig',
+    'backend.apps.CasesConfig',
     'mptt'
 ]
 
@@ -54,7 +54,8 @@ ROOT_URLCONF = 'AutoTest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': ['frontend/dist']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -79,7 +80,7 @@ DATABASES = {
         'NAME': 'auto_test',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '192.168.73.128',
+        'HOST': '10.1.160.162',
         'PORT': '3306'
     }
 }
@@ -119,9 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+# Add for vue.js
 STATICFILES_DIRS = (
 
-    os.path.join(BASE_DIR, 'static'),
-
+    # os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, "frontend/dist/static"),
 )
