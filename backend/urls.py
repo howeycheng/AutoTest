@@ -10,5 +10,6 @@ from django.urls import path
 from backend import views
 
 urlpatterns = [
-    path('testapi', views.testapi, name='testapi'),
+    # path('', views.index, name='index'),
+    path('testapi/', views.testapi, name='testapi')
 ]
