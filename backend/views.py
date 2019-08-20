@@ -15,11 +15,12 @@ from django.views.decorators.csrf import csrf_exempt
 
 def testapi(request):
     cases = Requirement.objects.values_list('rqid', 'name', 'parent_id')
-    cases_parent = []
+    cases_parent = {}
     for case in cases:
         if case[2] is 0:
-            cases_parent.append(case[1])
-    return HttpResponse(cases_parent)
+            # cases_parent.append(case[1])
+            cases_parent[case[0]] = case[1]
+    return JsonResponse(cases_parent)
 
 
 # @csrf_exempt
