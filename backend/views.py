@@ -13,17 +13,10 @@ from .models import Scene
 from django.views.decorators.csrf import csrf_exempt
 
 
-def testapi(request, *args, **kargs):
+def testapi(request):
     cases = Requirement.objects.values_list('rqid', 'name', 'parent_id')
     cases_parent = {}
-    if len(args) is 0 and len(kargs) is 0:
-        for case in cases:
-            if case[2] is 0:
-                cases_parent[case[0]] = case[1]
-    elif len(args) is not 0 and len(kargs) is 0:
-        pass
-    elif len(args) is 0 and len(kargs) is not 0:
-        pass
-    else:
-        pass
+    for case in cases:
+        if case[2] is 0:
+            cases_parent[case[0]] = case[1]
     return JsonResponse(cases_parent, json_dumps_params={'ensure_ascii': False})
