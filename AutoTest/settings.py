@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend.apps.CasesConfig',
-    'mptt'
+    'mptt',
+    # 'rest_framework_swagger',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
