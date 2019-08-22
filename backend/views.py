@@ -6,6 +6,8 @@ from django.shortcuts import render
 
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .models import Requirement
 from .models import Scene
@@ -13,10 +15,11 @@ from .models import Scene
 from django.views.decorators.csrf import csrf_exempt
 
 
-def testapi(request):
-    cases = Requirement.objects.values_list('rqid', 'name', 'parent_id')
-    cases_parent = {}
-    for case in cases:
-        if case[2] is 0:
-            cases_parent[case[0]] = case[1]
-    return JsonResponse(cases_parent, json_dumps_params={'ensure_ascii': False})
+@api_view(['GET', 'POST'])
+def get_req(request):
+    rqid = request.GET.get('rqid')  # 需求id
+    if rqid is None:  # 查询需求根节点
+        cases = Requirement.objects.filter(parent_id=0).values_list('rqid', 'name', 'parent_id')
+    elif rqid is not None:  # 查询点击节点子需求
+        cases = Requirement.objects.filter(parent_id=rqid).values_list('rqid', 'name', 'parent_id')
+    return Response(cases)

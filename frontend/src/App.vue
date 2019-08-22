@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <button id="button" v-on:click="getdata"></button>
-      {{info}}
+    <button id="button" v-on:click="getdata"></button>
+    {{info}}
   </div>
 </template>
 
@@ -25,7 +25,9 @@
                 // 发送请求:将数据返回到一个回到函数中
                 var that = this;
                 // 并且响应成功以后会执行then方法中的回调函数
-                axios.get(url).then(response => (that.info = response));
+                axios.get(url, {
+                    params: {}
+                }).then(response => (that.info = response));
             }
         }
     }
@@ -40,7 +42,8 @@
     color: #2c3e50;
     margin-top: 60px;
   }
-  #button{
+
+  #button {
     height: 100px;
     width: 100px;
   }
