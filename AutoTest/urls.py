@@ -23,5 +23,5 @@ urlpatterns = [
     path('atf/', include('backend.urls')),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html")),
-    url(r'^docs/', get_schema_view())
+    # url(r'^docs/', get_schema_view())
 ]
