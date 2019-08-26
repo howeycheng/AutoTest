@@ -11,5 +11,5 @@ from backend import views
 
 urlpatterns = [
     # path('', views.index, name='index'),
-    path('req/', views.get_req, name='testapi')
+    path('req/', views.get_req, name='req')
 ]
