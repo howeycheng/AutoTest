@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Requirement
+from .models import TcReqScene
 
 
 @api_view(['GET', 'POST'])
@@ -20,5 +21,5 @@ def get_req(request):
 @api_view(['GET', 'POST'])
 def get_scene(request):
     rqid = request.GET.get('rqid')  # 需求id
-    cases = Requirement.objects.filter(parent_id=rqid).values('rqid', 'name', 'parent_id')
-    return Response(cases)
+    scene = TcReqScene.objects.filter(fk_req_id=rqid).values('pk_id', 'scene_name')
+    return Response(scene)

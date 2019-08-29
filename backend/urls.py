@@ -11,5 +11,6 @@ from backend import views
 
 urlpatterns = [
     # path('', views.index, name='index'),
-    path('req/', views.get_req, name='req')
+    path('req/', views.get_req, name='req'),
+    path('scene/', views.get_scene, name='scene')
 ]
