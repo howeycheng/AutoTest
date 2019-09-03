@@ -12,5 +12,7 @@ from backend import views
 urlpatterns = [
     # path('', views.index, name='index'),
     path('req/', views.get_req, name='req'),
-    path('scene/', views.get_scene, name='scene')
+    path('scene/', views.get_scene, name='scene'),
+    path('sceneDetail/',views.get_scene_detail,name='sceneDetail'),
+    path('cases/',views.get_cases,name='cases')
 ]
