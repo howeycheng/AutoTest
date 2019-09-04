@@ -14,5 +14,6 @@ urlpatterns = [
     path('req/', views.get_req, name='req'),
     path('scene/', views.get_scene, name='scene'),
     path('sceneDetail/',views.get_scene_detail,name='sceneDetail'),
-    path('cases/',views.get_cases,name='cases')
+    path('cases/',views.get_cases,name='cases'),
+    path('casesDetail/',views.get_cases_io,name='casesDetail')
 ]

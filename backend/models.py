@@ -221,36 +221,6 @@ class AllcaseSetIoOutparam(models.Model):
         db_table = 'allcase_set_io_outparam'
 
 
-class TcReqScene(models.Model):
-    pk_id = models.IntegerField(blank=True, null=True)
-    project_id = models.IntegerField(blank=True, null=True)
-    fk_req_id = models.IntegerField(blank=True, null=True)
-    scene_name = models.TextField(db_column='scene_Name', blank=True, null=True)  # Field name made lowercase.
-    scene_desc = models.CharField(db_column='scene_Desc', max_length=400, blank=True,
-                                  null=True)  # Field name made lowercase.
-    scene_rbt = models.TextField(db_column='scene_RBT', blank=True, null=True)  # Field name made lowercase.
-    scene_complexity = models.TextField(db_column='scene_Complexity', blank=True,
-                                        null=True)  # Field name made lowercase.
-    source_type = models.IntegerField(blank=True, null=True)
-    target_source = models.TextField(db_column='target_Source', blank=True, null=True)  # Field name made lowercase.
-    file_name = models.TextField(blank=True, null=True)
-    master = models.TextField(blank=True, null=True)
-    created_user = models.TextField(db_column='created_User', blank=True, null=True)  # Field name made lowercase.
-    created_date = models.DateField(db_column='created_Date', blank=True, null=True)  # Field name made lowercase.
-    auditing_state = models.IntegerField(db_column='AUDITING_STATE', blank=True,
-                                         null=True)  # Field name made lowercase.
-    precondition = models.TextField(blank=True, null=True)
-    sceneimg = models.TextField(blank=True, null=True)
-    scenevks = models.TextField(blank=True, null=True)
-    default1 = models.TextField(blank=True, null=True)
-    default2 = models.TextField(blank=True, null=True)
-    default3 = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'tc_req_scene'
-
-
 class TcSceneSet(models.Model):
     pk_id = models.IntegerField(db_column='PK_ID', blank=True, null=True)  # Field name made lowercase.
     project_id = models.IntegerField(db_column='PROJECT_ID', blank=True, null=True)  # Field name made lowercase.

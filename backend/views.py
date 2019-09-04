@@ -3,7 +3,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Requirement, TcSceneSet, Allcase
+from .models import Requirement, TcSceneSet, Allcase, AllcaseSetIoOutparam, AllcaseSetIo
 from .models import TcReqScene
 
 
@@ -35,5 +35,17 @@ def get_scene_detail(request):
 @api_view(['GET', 'POST'])
 def get_cases(request):
     rqid = request.GET.get('rqid')  # 需求id
-    scene = Allcase.objects.filter(fk_scene_id=rqid).values('name','table_name')
+    scene = Allcase.objects.filter(fk_scene_id=rqid).values('name', 'table_name')
     return Response(scene)
+
+
+@api_view(['GET', 'POST'])
+def get_cases_io(request):
+    case_name = request.GET.get('case_name')  # 需求id
+    scenes = AllcaseSetIo.objects.filter(set_name=case_name).values('description', 'value').order_by('sequence')
+    case_io = []
+    for scene in scenes:
+        name = scene['description'].split("\0")
+        value = scene['value'].split("\0")
+        case_io.append(dict(zip(name, value)))
+    return Response(case_io)
