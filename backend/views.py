@@ -3,8 +3,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Requirement, TcSceneSet, Allcase, AllcaseSetIoOutparam, AllcaseSetIo
-from .models import TcReqScene
+from .models import *
 
 
 @api_view(['GET', 'POST'])
@@ -27,6 +26,11 @@ def get_scene(request):
 
 @api_view(['GET', 'POST'])
 def get_scene_detail(request):
+    """
+    获取场景组件
+    :param request:
+    :return:
+    """
     rqid = request.GET.get('rqid')  # 需求id
     scene = TcSceneSet.objects.filter(fk_scene_id=rqid).values('case_name').order_by('wl_action')
     return Response(scene)
@@ -41,7 +45,7 @@ def get_cases(request):
 
 @api_view(['GET', 'POST'])
 def get_cases_io(request):
-    case_name = request.GET.get('case_name')  # 需求id
+    case_name = request.GET.get('case_name')  #
     scenes = AllcaseSetIo.objects.filter(set_name=case_name).values('description', 'value').order_by('sequence')
     case_io = []
     for scene in scenes:
@@ -49,3 +53,17 @@ def get_cases_io(request):
         value = scene['value'].split("\0")
         case_io.append(dict(zip(name, value)))
     return Response(case_io)
+
+
+@api_view(['GET', 'POST'])
+def get_component_col(request):
+    """
+    获取组件栏位值
+    :param request:
+    :return:
+    """
+    component = request.GET.get('component')  #
+    component_id = Component.objects.filter(scriptname=component).values('pk_id')
+    component_col = TcConstraintsRule.objects.filter(fk_com_id=component_id[0]['pk_id']).values('target_field','description','paramvalue').order_by(
+        'pk_id')
+    return Response(component_col)

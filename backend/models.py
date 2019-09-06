@@ -237,3 +237,59 @@ class TcSceneSet(models.Model):
     class Meta:
         managed = False
         db_table = 'tc_scene_set'
+
+
+class Component(models.Model):
+    pk_id = models.IntegerField(blank=True, null=True)
+    project_id = models.IntegerField(db_column='PROJECT_ID', blank=True, null=True)  # Field name made lowercase.
+    runnerid = models.IntegerField(db_column='RUNNERID', blank=True, null=True)  # Field name made lowercase.
+    rootname = models.TextField(db_column='ROOTNAME', blank=True, null=True)  # Field name made lowercase.
+    groupname = models.TextField(db_column='GROUPNAME', blank=True, null=True)  # Field name made lowercase.
+    modulename = models.TextField(db_column='MODULENAME', blank=True, null=True)  # Field name made lowercase.
+    description = models.TextField(db_column='DESCRIPTION', blank=True, null=True)  # Field name made lowercase.
+    scriptname = models.TextField(db_column='SCRIPTNAME', blank=True, null=True)  # Field name made lowercase.
+    dataname = models.TextField(db_column='DATANAME', blank=True, null=True)  # Field name made lowercase.
+    version = models.TextField(db_column='VERSION', blank=True, null=True)  # Field name made lowercase.
+    created_user = models.TextField(blank=True, null=True)
+    created_date = models.TextField(blank=True, null=True)
+    default1 = models.TextField(blank=True, null=True)
+    default2 = models.TextField(blank=True, null=True)
+    default3 = models.TextField(blank=True, null=True)
+    default4 = models.TextField(blank=True, null=True)
+    default5 = models.TextField(blank=True, null=True)
+    extend_com_id = models.IntegerField(db_column='extend_com_Id', blank=True, null=True)  # Field name made lowercase.
+    parent_id = models.IntegerField(blank=True, null=True)
+    level = models.PositiveIntegerField(blank=True, null=True)
+    type = models.PositiveIntegerField(blank=True, null=True)
+    tier = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'component'
+
+
+class TcConstraintsRule(models.Model):
+    pk_id = models.PositiveIntegerField(blank=True, null=True)
+    project_id = models.IntegerField(blank=True, null=True)
+    fk_com_id = models.IntegerField(blank=True, null=True)
+    target_field = models.TextField(blank=True, null=True)
+    condition_field = models.TextField(blank=True, null=True)
+    con_value = models.TextField(blank=True, null=True)
+    con_value_index = models.IntegerField(blank=True, null=True)
+    check_field = models.TextField(blank=True, null=True)
+    res_value = models.TextField(blank=True, null=True)
+    res_value_index = models.IntegerField(blank=True, null=True)
+    read_only_marking = models.TextField(blank=True, null=True)
+    hascondition = models.IntegerField(db_column='hasCondition', blank=True, null=True)  # Field name made lowercase.
+    default1 = models.TextField(blank=True, null=True)
+    default2 = models.TextField(blank=True, null=True)
+    default3 = models.TextField(blank=True, null=True)
+    default4 = models.TextField(blank=True, null=True)
+    default5 = models.TextField(blank=True, null=True)
+    check_name = models.TextField(blank=True, null=True)
+    description = models.CharField(max_length=500, blank=True, null=True)
+    paramvalue = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tc_constraints_rule'
