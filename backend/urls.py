@@ -16,5 +16,6 @@ urlpatterns = [
     path('sceneDetail/', views.get_scene_detail, name='sceneDetail'),
     path('cases/', views.get_cases, name='cases'),
     path('casesDetail/', views.get_cases_io, name='casesDetail'),
-    path('componentCol/', views.get_component_col, name='componentCol')
+    path('componentCol/', views.get_component_col, name='componentCol'),
+    path('sceneParams/', views.get_scene_params, name='sceneParams'),
 ]

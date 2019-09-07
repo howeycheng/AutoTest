@@ -42,7 +42,7 @@ def get_scene_detail(request):
     :return:
     """
     rqid = request.GET.get('rqid')  # 需求id
-    scene = TcSceneSet.objects.filter(fk_scene_id=rqid).values('case_name').order_by('wl_action')
+    scene = TcSceneSet.objects.filter(fk_scene_id=rqid).values('case_name', 'fk_com_id').order_by('wl_action')
     return Response(scene)
 
 
@@ -84,19 +84,28 @@ def get_component_col(request):
     """
     component = request.GET.get('component')  #
     component_id = Component.objects.filter(scriptname=component).values('pk_id')
-    component_col = TcConstraintsRule.objects.filter(fk_com_id=component_id[0]['pk_id']).values('target_field','description','paramvalue').order_by(
+    component_col = TcConstraintsRule.objects.filter(fk_com_id=component_id[0]['pk_id']).values('target_field',
+                                                                                                'description',
+                                                                                                'paramvalue').order_by(
         'pk_id')
     return Response(component_col)
 
 
-
-
-
-
-
-
-
-
-
-
-
+@api_view(['GET', 'POST'])
+def get_scene_params(request):
+    """
+    获取场景组件栏位值，默认值等信息
+    :param request:
+    :return:
+    """
+    rqid = request.GET.get('rqid')  # 场景id
+    component_ids = TcSceneSet.objects.filter(fk_scene_id=rqid).values('fk_com_id', 'case_name').order_by('wl_action')
+    components_params = []
+    print(component_ids)
+    for component_id in component_ids:
+        component_col = TcConstraintsRule.objects.filter(fk_com_id=component_id['fk_com_id']).values('target_field',
+                                                                                                     'description',
+                                                                                                     'paramvalue').order_by(
+            'pk_id')
+        components_params.append({component_id['case_name']: component_col})
+    return Response(components_params)
