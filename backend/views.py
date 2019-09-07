@@ -8,6 +8,11 @@ from .models import *
 
 @api_view(['GET', 'POST'])
 def get_req(request):
+    """
+    获取需求
+    :param request:
+    :return:
+    """
     req = []
     rqid = request.GET.get('rqid')  # 需求id
     if rqid is None:  # 查询需求根节点
@@ -19,7 +24,12 @@ def get_req(request):
 
 @api_view(['GET', 'POST'])
 def get_scene(request):
-    rqid = request.GET.get('rqid')  # 需求id
+    """
+    获取需求下场景
+    :param request:
+    :return:
+    """
+    rqid = request.GET.get('rqid')  # 需求ID
     scene = TcReqScene.objects.filter(fk_req_id=rqid).values('pk_id', 'scene_name')
     return Response(scene)
 
@@ -38,13 +48,23 @@ def get_scene_detail(request):
 
 @api_view(['GET', 'POST'])
 def get_cases(request):
-    rqid = request.GET.get('rqid')  # 需求id
+    """
+    获取场景下用例名称
+    :param request:
+    :return:
+    """
+    rqid = request.GET.get('rqid')
     scene = Allcase.objects.filter(fk_scene_id=rqid).values('name', 'table_name')
     return Response(scene)
 
 
 @api_view(['GET', 'POST'])
 def get_cases_io(request):
+    """
+    获取用例IO
+    :param request:
+    :return:
+    """
     case_name = request.GET.get('case_name')  #
     scenes = AllcaseSetIo.objects.filter(set_name=case_name).values('description', 'value').order_by('sequence')
     case_io = []
@@ -67,3 +87,16 @@ def get_component_col(request):
     component_col = TcConstraintsRule.objects.filter(fk_com_id=component_id[0]['pk_id']).values('target_field','description','paramvalue').order_by(
         'pk_id')
     return Response(component_col)
+
+
+
+
+
+
+
+
+
+
+
+
+
