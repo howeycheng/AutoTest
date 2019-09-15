@@ -1,5 +1,6 @@
 # Create your views here.
-
+from django.http import HttpResponse, JsonResponse
+from django.utils import http
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -109,3 +110,32 @@ def get_scene_params(request):
             'pk_id')
         components_params.append({component_id['case_name']: component_col})
     return Response(components_params)
+
+
+@api_view(['GET', 'POST'])
+def get_scene_cases_io(request):
+    """
+    获取场景组件栏位值，默认值等信息
+    :param request:
+    :return:
+    """
+    rqid = request.GET.get('rqid')  # 场景ID
+    current_page = int(request.GET.get('currentPage'))  # 当前页数
+    page_size = int(request.GET.get('pageSize'))  # 每页数据数
+    cases_list = Allcase.objects.filter(fk_scene_id=rqid).values('table_name', 'name').order_by('name')[
+                 (current_page - 1) * page_size:current_page * page_size]
+    cases_io = []
+    for case in cases_list:
+        case_id = case.get('table_name')
+        case_name = case.get('name')
+        case_io_all = AllcaseSetIo.objects.filter(set_name=case_id).values('name', 'description', 'value',
+                                                                           'sequence').order_by(
+            'sequence')
+        case_io_one = {'name': case_name}
+        for set_io in case_io_all:
+            name = set_io['description'].split("\0")
+            value = set_io['value'].split("\0")
+            sequence = set_io['sequence']
+            case_io_one[sequence] = dict(zip(name, value))
+        cases_io.append(case_io_one)
+    return Response(cases_io)
