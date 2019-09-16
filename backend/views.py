@@ -134,8 +134,10 @@ def get_scene_cases_io(request):
         case_io_one = {'name': case_name}
         for set_io in case_io_all:
             name = set_io['description'].split("\0")
-            value = set_io['value'].split("\0")
+            io_value = set_io['value'].split("\0")
             sequence = set_io['sequence']
-            case_io_one[sequence] = dict(zip(name, value))
+            set_io_dict = dict(zip(name, io_value))
+            for key, value in set_io_dict.items():  # 暂时将各个组件IO放在一个字典中，用sequence标识区分
+                case_io_one["sequence_" + str(sequence) + "_" + key] = value.lstrip('[').rstrip(']')
         cases_io.append(case_io_one)
     return Response(cases_io)
