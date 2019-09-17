@@ -141,3 +141,17 @@ def get_scene_cases_io(request):
                 case_io_one["sequence_" + str(sequence) + "_" + key] = value.lstrip('[').rstrip(']')
         cases_io.append(case_io_one)
     return Response(cases_io)
+
+
+@api_view(['GET', 'POST'])
+def get_scene_set_io(request):
+    """
+    获取场景下值传递、校验点等信息
+    :param request:
+    :return:
+    """
+    rqid = request.GET.get('rqid')  # 场景id
+    type = request.GET.get('type')  # 数据类型
+    set_io = TcSceneSetIo.objects.filter(fk_scene_id=rqid, type=type).values('name', 'assign').order_by(
+        'sequence')
+    return Response(set_io)

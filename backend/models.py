@@ -293,3 +293,18 @@ class TcConstraintsRule(models.Model):
     class Meta:
         managed = False
         db_table = 'tc_constraints_rule'
+
+
+class TcSceneSetIo(models.Model):
+    project_id = models.IntegerField(blank=True, null=True)
+    fk_scene_id = models.IntegerField(blank=True, null=True)
+    type = models.IntegerField(blank=True, null=True)
+    name = models.TextField(blank=True, null=True)
+    assign = models.TextField(blank=True, null=True)
+    value = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    sequence = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tc_scene_set_io'
