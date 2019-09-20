@@ -102,7 +102,6 @@ def get_scene_params(request):
     rqid = request.GET.get('rqid')  # 场景id
     component_ids = TcSceneSet.objects.filter(fk_scene_id=rqid).values('fk_com_id', 'case_name').order_by('wl_action')
     components_params = []
-    print(component_ids)
     for component_id in component_ids:
         component_col = TcConstraintsRule.objects.filter(fk_com_id=component_id['fk_com_id']).values('target_field',
                                                                                                      'description',
@@ -129,8 +128,7 @@ def get_scene_cases_io(request):
         case_id = case.get('table_name')
         case_name = case.get('name')
         case_io_all = AllcaseSetIo.objects.filter(set_name=case_id).values('name', 'description', 'value',
-                                                                           'sequence').order_by(
-            'sequence')
+                                                                           'sequence').order_by('sequence')
         case_io_one = {'name': case_name}
         for set_io in case_io_all:
             name = set_io['description'].split("\0")
