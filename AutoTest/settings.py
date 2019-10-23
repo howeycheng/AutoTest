@@ -58,8 +58,7 @@ ROOT_URLCONF = 'AutoTest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        'DIRS': ['frontend/dist']
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/dist')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,12 +123,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+# 前端路径
+FRONTEND_ROOT = 'frontend/dist'
+
+# 静态资源地址
 STATIC_URL = '/static/'
 # Add for vue.js
-STATICFILES_DIRS = (
 
-    # os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, "frontend/dist/static"),
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, FRONTEND_ROOT),
+    os.path.join(BASE_DIR, FRONTEND_ROOT + '/static/'),
 )
 
 CORS_ALLOW_CREDENTIALS = True
