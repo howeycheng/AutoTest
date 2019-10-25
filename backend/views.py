@@ -153,3 +153,21 @@ def get_scene_set_io(request):
     set_io = TcSceneSetIo.objects.filter(fk_scene_id=rqid, type=type).values('name', 'assign').order_by(
         'sequence')
     return Response(set_io)
+
+
+@api_view(['GET', 'POST'])
+def get_set(request):
+    """
+    获取测试集
+    :param request:
+    :return:
+    """
+    level = request.GET.get('level')  # 级别
+    if level == '0':
+        set = Allset.objects.filter(level=0).values('pk_id', 'group_name').order_by(
+            'pk_id')
+    else:
+        pk_id = request.GET.get('pk_id')  # 测试集ID
+        set = Allset.objects.filter(parent_id=pk_id).values('pk_id', 'name').order_by(
+            'pk_id')
+    return Response(set)

@@ -308,3 +308,29 @@ class TcSceneSetIo(models.Model):
     class Meta:
         managed = False
         db_table = 'tc_scene_set_io'
+
+
+class Allset(models.Model):
+    pk_id = models.IntegerField(db_column='PK_ID', blank=True, null=True)  # Field name made lowercase.
+    project_id = models.PositiveIntegerField(db_column='PROJECT_ID', blank=True,
+                                             null=True)  # Field name made lowercase.
+    group_name = models.TextField(db_column='GROUP_NAME', blank=True, null=True)  # Field name made lowercase.
+    name = models.TextField(db_column='NAME', blank=True, null=True)  # Field name made lowercase.
+    table_name = models.TextField(db_column='TABLE_NAME', blank=True, null=True)  # Field name made lowercase.
+    data_name = models.CharField(db_column='DATA_NAME', max_length=255, blank=True,
+                                 null=True)  # Field name made lowercase.
+    version = models.CharField(db_column='VERSION', max_length=60, blank=True, null=True)  # Field name made lowercase.
+    description = models.CharField(db_column='DESCRIPTION', max_length=4369, blank=True,
+                                   null=True)  # Field name made lowercase.
+    created_user = models.TextField(blank=True, null=True)
+    created_date = models.DateField(blank=True, null=True)
+    parent_id = models.IntegerField(blank=True, null=True)
+    level = models.IntegerField(blank=True, null=True)
+    default1 = models.TextField(blank=True, null=True)
+    default2 = models.TextField(blank=True, null=True)
+    default3 = models.CharField(max_length=300, blank=True, null=True)
+    default4 = models.CharField(max_length=300, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'allset'
