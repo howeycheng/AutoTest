@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="root@10.1.160.162:22">
+  <component name="PublishConfigData">
     <serverData>
       <paths name="howeycheng@122.51.44.31:22">
         <serverdata>
           <mappings>
             <mapping deploy="/tmp/pycharm_project_772" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="linux">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/howeycheng/workspace" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="root@10.1.160.162:22">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/tmp/pycharm_project_342" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

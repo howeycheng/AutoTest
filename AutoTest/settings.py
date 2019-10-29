@@ -83,8 +83,8 @@ DATABASES = {
         'NAME': 'auto_test',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '10.1.160.162',
-        # 'HOST': '122.51.44.31',
+        # 'HOST': '10.1.160.162',
+        'HOST': '122.51.44.31',
         # 'HOST': '192.168.73.128',
         'PORT': '3306'
     }

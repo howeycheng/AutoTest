@@ -166,8 +166,12 @@ def get_set(request):
     if level == '0':
         set = Allset.objects.filter(level=0).values('pk_id', 'group_name').order_by(
             'pk_id')
+        # 统一输出格式
+        for index in range(len(set)):
+            set[index]['name'] = set[index]['group_name']
     else:
         pk_id = request.GET.get('pk_id')  # 测试集ID
         set = Allset.objects.filter(parent_id=pk_id).values('pk_id', 'name').order_by(
             'pk_id')
+    print(set)
     return Response(set)
