@@ -175,3 +175,33 @@ def get_set(request):
             'pk_id')
     print(set)
     return Response(set)
+
+
+@api_view(['GET', 'POST'])
+def get_cases_in_set(request):
+    """
+    获取测试集下用例
+    :param request:
+    :return:
+    """
+    set = request.GET.get('set')
+    cases = AllsetSet.objects.filter(set_name=set).values('case_name', 'case_clazz', 'table_name')
+    return Response(cases)
+
+
+@api_view(['GET', 'POST'])
+def get_req_of_case(request):
+    """
+    获取用例所在场景，第一级
+    :param request:
+    :return:
+    """
+    set = request.GET.get('set')
+    tiers = Allcase.objects.raw("select * from allcase;")
+    # for case in cases:
+    #     tier = Allcase.objects.filter(table_name=case.get('table_name')).values('tier')
+    #     tier_fir = tier[0].get('tier')[0:3]  # tier前三个数字为一级场景tier
+    # if tier_fir not in tiers:
+    #     tiers.append(tier_fir)
+    # req = Allcase.objects.filter(tier=tier_fir).values('table_name', 'name', 'pk_id')
+    return Response(tiers)

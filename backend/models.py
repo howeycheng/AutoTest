@@ -334,3 +334,30 @@ class Allset(models.Model):
     class Meta:
         managed = False
         db_table = 'allset'
+
+
+class AllsetSet(models.Model):
+    project_id = models.PositiveIntegerField(db_column='PROJECT_ID', blank=True,
+                                             null=True)  # Field name made lowercase.
+    case_name = models.CharField(db_column='CASE_NAME', max_length=150, blank=True,
+                                 null=True)  # Field name made lowercase.
+    case_clazz = models.CharField(db_column='CASE_CLAZZ', max_length=1200, blank=True,
+                                  null=True)  # Field name made lowercase.
+    case_type = models.IntegerField(db_column='CASE_TYPE', blank=True, null=True)  # Field name made lowercase.
+    case_role = models.CharField(db_column='CASE_ROLE', max_length=150, blank=True,
+                                 null=True)  # Field name made lowercase.
+    case_data = models.CharField(db_column='CASE_DATA', max_length=150, blank=True,
+                                 null=True)  # Field name made lowercase.
+    table_name = models.ForeignKey(Allcase,on_delete=models.CASCADE,db_column='TABLE_NAME', blank=True, null=True)  # Field name made lowercase.
+    wl_action = models.IntegerField(db_column='WL_ACTION', blank=True, null=True)  # Field name made lowercase.
+    wl_case = models.CharField(db_column='WL_CASE', max_length=150, blank=True, null=True)  # Field name made lowercase.
+    version = models.CharField(db_column='VERSION', max_length=60, blank=True, null=True)  # Field name made lowercase.
+    description = models.CharField(db_column='DESCRIPTION', max_length=4369, blank=True,
+                                   null=True)  # Field name made lowercase.
+    case_state = models.IntegerField(db_column='CASE_STATE', blank=True, null=True)  # Field name made lowercase.
+    set_name = models.TextField(db_column='SET_NAME', blank=True, null=True)  # Field name made lowercase.
+    flag = models.PositiveIntegerField(db_column='FLAG', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'allset_set'

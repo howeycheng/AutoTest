@@ -21,4 +21,6 @@ urlpatterns = [
     path('sceneCasesIo/', views.get_scene_cases_io, name='sceneCasesIo'),
     path('sceneSetIo/', views.get_scene_set_io, name='sceneSetIo'),
     path('set/', views.get_set, name='set'),
+    path('casesInSet/', views.get_cases_in_set, name='casesInSet'),
+    path('reqOfCase/', views.get_req_of_case, name='reqOfCase'),
 ]
