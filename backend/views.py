@@ -1,4 +1,5 @@
 # Create your views here.
+from django.db import connection
 from django.http import HttpResponse, JsonResponse
 from django.utils import http
 from rest_framework.decorators import api_view
@@ -197,11 +198,15 @@ def get_req_of_case(request):
     :return:
     """
     set = request.GET.get('set')
-    tiers = Allcase.objects.raw("select * from allcase;")
-    # for case in cases:
-    #     tier = Allcase.objects.filter(table_name=case.get('table_name')).values('tier')
-    #     tier_fir = tier[0].get('tier')[0:3]  # tier前三个数字为一级场景tier
-    # if tier_fir not in tiers:
-    #     tiers.append(tier_fir)
-    # req = Allcase.objects.filter(tier=tier_fir).values('table_name', 'name', 'pk_id')
-    return Response(tiers)
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "select distinct allcase.tier from allcase join allset_set on allcase.TABLE_NAME = allset_set.TABLE_NAME where allset_set.SET_NAME = %s",
+            [set])
+        row = cursor.fetchall()
+    row_list = []
+    for r in row:
+        if r[0][0:3] not in row_list:
+            row_list.append(r[0][0:3])
+    print(row_list)
+    req = Allcase.objects.filter(tier__in=row_list).values("pk_id", "name", "table_name")
+    return Response(req)
