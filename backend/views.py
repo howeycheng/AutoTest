@@ -199,6 +199,8 @@ def get_req_of_case(request):
     :param request:
     :return:
     """
+    global SET_TEMP
+    SET_TEMP = []
     set = request.GET.get('set')
     with connection.cursor() as cursor:
         cursor.execute(

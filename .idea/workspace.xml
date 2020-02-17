@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoTest/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoTest/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579142886373</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="增加测试集">
+      <created>1581922557177</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1581922557177</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,11 +172,11 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="94" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1280.994@0.30.1280.994" timestamp="1581917388326" />
-    <state x="373" y="155" key="CommitChangelistDialog2" timestamp="1581919901446">
+    <state x="373" y="155" key="CommitChangelistDialog2" timestamp="1581922555999">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="541" y="136" key="CommitChangelistDialog2/0.0.1858.1080/1920.0.1024.1240@0.0.1858.1080" timestamp="1577348714464" />
-    <state x="373" y="155" key="CommitChangelistDialog2/0.30.1280.994@0.30.1280.994" timestamp="1581919901446" />
+    <state x="373" y="155" key="CommitChangelistDialog2/0.30.1280.994@0.30.1280.994" timestamp="1581922555999" />
     <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1579142883624" />
     <state x="541" y="136" key="CommitChangelistDialog2/1920.54.962.1280/0.0.1858.1080@0.0.1858.1080" timestamp="1575942297642" />
     <state x="709" y="298" key="FileChooserDialogImpl" timestamp="1575969671842">
@@ -227,11 +232,11 @@
     </state>
     <state x="133" y="181" key="SettingsEditor/0.30.1280.994@0.30.1280.994" timestamp="1581916972233" />
     <state x="432" y="185" key="SettingsEditor/1920.54.962.1280/0.0.1858.1080@0.0.1858.1080" timestamp="1575858917679" />
-    <state x="359" y="284" key="Vcs.Push.Dialog.v2" timestamp="1581920003472">
+    <state x="359" y="284" key="Vcs.Push.Dialog.v2" timestamp="1581922563048">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="521" y="276" key="Vcs.Push.Dialog.v2/0.0.1858.1080/1920.0.1024.1240@0.0.1858.1080" timestamp="1577348722571" />
-    <state x="359" y="284" key="Vcs.Push.Dialog.v2/0.30.1280.994@0.30.1280.994" timestamp="1581920003472" />
+    <state x="359" y="284" key="Vcs.Push.Dialog.v2/0.30.1280.994@0.30.1280.994" timestamp="1581922563048" />
     <state x="538" y="298" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1579142889825" />
     <state x="521" y="276" key="Vcs.Push.Dialog.v2/1920.54.962.1280/0.0.1858.1080@0.0.1858.1080" timestamp="1575942302688" />
   </component>
