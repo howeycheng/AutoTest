@@ -214,24 +214,34 @@ def get_req_of_case(request):
     for r in row:
         i = 0
         length = len(r[0])
-        while i + 3 <= length:
+        while i + 3 < length:
             if r[0][0:i + 3] not in SET_TEMP:
                 SET_TEMP.append(r[0][0:i + 3])
             i = i + 3
-    print(SET_TEMP)
+        SET_TEMP.append(r[0])
     req = Allcase.objects.filter(tier__in=row_list).values("pk_id", "name", "table_name")
     return Response(req)
 
 
 @api_view(['GET', 'POST'])
 def get_req_from_set_temp(request):
-    print(SET_TEMP)
     set_row = []
     req = request.GET.get('req')
-    print(req)
     for s in SET_TEMP:
         print(s[:-3])
         if s[:-3] == req:
             set_row.append(s)
     res = Allcase.objects.filter(tier__in=set_row).values("pk_id", "name", "table_name")
     return Response(res)
+
+
+@api_view(['GET', 'POST'])
+def get_case_of_test_set(request):
+    s = request.GET.get('set')  # 测试集
+    tier = request.GET.get('tier') + "000"
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "select allcase.TABLE_NAME,allset_set.CASE_NAME,allset_set.CASE_CLAZZ from allcase join allset_set on allcase.TABLE_NAME = allset_set.TABLE_NAME where allset_set.SET_NAME = %s and allcase.tier = %s",
+            [s, tier])
+        row = cursor.fetchall()
+    return Response(row)
