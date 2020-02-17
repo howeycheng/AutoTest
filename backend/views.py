@@ -204,9 +204,19 @@ def get_req_of_case(request):
             [set])
         row = cursor.fetchall()
     row_list = []
+    row_list2 = []
+    print(row)
     for r in row:
         if r[0][0:3] not in row_list:
             row_list.append(r[0][0:3])
-    print(row_list)
+    for r in row:
+        i = 0
+        length = len(r[0])
+        while i + 3 < length:
+            print(r[0][0:i + 3])
+            if r[0][0:i + 3] not in row_list2:
+                row_list2.append(r[0][0:i + 3])
+            i = i + 3
+    print(row_list2)
     req = Allcase.objects.filter(tier__in=row_list).values("pk_id", "name", "table_name")
     return Response(req)
