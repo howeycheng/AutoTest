@@ -82,9 +82,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'auto_test',
         'USER': 'root',
-        'PASSWORD': 'csc_1o8',
-        # 'HOST': '10.1.160.162',
-        'HOST': '122.51.44.31',
+        'PASSWORD': 'root',
+        'HOST': '10.1.160.162',
+        # 'HOST': '122.51.44.31',
         # 'HOST': '192.168.73.128',
         'PORT': '3306'
     }
