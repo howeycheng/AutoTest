@@ -167,17 +167,16 @@ def get_set(request):
     """
     level = request.GET.get('level')  # 级别
     if level == '0':
-        set = Allset.objects.filter(level=0).values('pk_id', 'group_name').order_by(
+        s = Allset.objects.filter(level=0).values('pk_id', 'group_name').order_by(
             'pk_id')
         # 统一输出格式
-        for index in range(len(set)):
-            set[index]['name'] = set[index]['group_name']
+        for index in range(len(s)):
+            s[index]['name'] = s[index]['group_name']
     else:
         pk_id = request.GET.get('pk_id')  # 测试集ID
-        set = Allset.objects.filter(parent_id=pk_id).values('pk_id', 'name').order_by(
+        s = Allset.objects.filter(parent_id=pk_id).values('pk_id', 'name', 'table_name').order_by(
             'pk_id')
-    print(set)
-    return Response(set)
+    return Response(s)
 
 
 @api_view(['GET', 'POST'])
@@ -200,39 +199,36 @@ def get_req_of_case(request):
     :return:
     """
     global SET_TEMP
-    SET_TEMP = []
-    set = request.GET.get('set')
-    with connection.cursor() as cursor:
-        cursor.execute(
-            "select distinct allcase.tier from allcase join allset_set on allcase.TABLE_NAME = allset_set.TABLE_NAME where allset_set.SET_NAME = %s",
-            [set])
-        row = cursor.fetchall()
-    row_list = []
-    for r in row:
-        if r[0][0:3] not in row_list:
-            row_list.append(r[0][0:3])
-    for r in row:
-        i = 0
-        length = len(r[0])
-        while i + 3 < length:
-            if r[0][0:i + 3] not in SET_TEMP:
-                SET_TEMP.append(r[0][0:i + 3])
-            i = i + 3
-        SET_TEMP.append(r[0])
-    req = Allcase.objects.filter(tier__in=row_list).values("pk_id", "name", "table_name")
-    return Response(req)
-
-
-@api_view(['GET', 'POST'])
-def get_req_from_set_temp(request):
-    set_row = []
-    req = request.GET.get('req')
-    for s in SET_TEMP:
-        print(s[:-3])
-        if s[:-3] == req:
-            set_row.append(s)
-    res = Allcase.objects.filter(tier__in=set_row).values("pk_id", "name", "table_name")
-    return Response(res)
+    level = request.GET.get('level')  # 级别
+    set_id = request.GET.get('set')
+    req_id = request.GET.get('reqId')
+    if level == "0":
+        SET_TEMP = []
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "select distinct allcase.tier from allcase join allset_set on allcase.TABLE_NAME = allset_set.TABLE_NAME where allset_set.SET_NAME = %s",
+                [set_id])
+            row = cursor.fetchall()
+        row_list = []
+        for r in row:
+            if r[0][0:3] not in row_list:
+                row_list.append(r[0][0:3])
+        for r in row:
+            i = 0
+            length = len(r[0])
+            while i + 3 < length:
+                if r[0][0:i + 3] not in SET_TEMP:
+                    SET_TEMP.append(r[0][0:i + 3])
+                i = i + 3
+        req = Allcase.objects.filter(tier__in=row_list).values("pk_id", "name", "table_name", "tier")
+        return Response(req)
+    else:
+        set_row = []
+        for s in SET_TEMP:
+            if s[:-3] == req_id:
+                set_row.append(s)
+        req = Allcase.objects.filter(tier__in=set_row).values("pk_id", "name", "table_name", "tier")
+        return Response(req)
 
 
 @api_view(['GET', 'POST'])

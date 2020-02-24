@@ -23,6 +23,5 @@ urlpatterns = [
     path('set/', views.get_set, name='set'),
     path('casesInSet/', views.get_cases_in_set, name='casesInSet'),
     path('reqOfCase/', views.get_req_of_case, name='reqOfCase'),
-    path('reqFromSetTemp/', views.get_req_from_set_temp, name='reqFromSetTemp'),
     path('casesOfSet/', views.get_case_of_test_set, name='casesOfSet'),
 ]
