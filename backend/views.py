@@ -201,7 +201,7 @@ def get_req_of_case(request):
     global SET_TEMP
     level = request.GET.get('level')  # 级别
     set_id = request.GET.get('set')
-    req_id = request.GET.get('reqId')
+    req_id = request.GET.get('req')
     if level == "0":
         SET_TEMP = []
         with connection.cursor() as cursor:
@@ -223,6 +223,7 @@ def get_req_of_case(request):
         req = Allcase.objects.filter(tier__in=row_list).values("pk_id", "name", "table_name", "tier")
         return Response(req)
     else:
+        print(SET_TEMP)
         set_row = []
         for s in SET_TEMP:
             if s[:-3] == req_id:
