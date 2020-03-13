@@ -201,7 +201,7 @@ def get_req_of_case(request):
     global SET_TEMP
     level = request.GET.get('level')  # 级别
     set_id = request.GET.get('set')
-    req_id = request.GET.get('req')
+    tier = request.GET.get('tier')
     if level == "0":
         SET_TEMP = []
         with connection.cursor() as cursor:
@@ -223,22 +223,22 @@ def get_req_of_case(request):
         req = Allcase.objects.filter(tier__in=row_list).values("pk_id", "name", "table_name", "tier")
         return Response(req)
     else:
-        print(SET_TEMP)
         set_row = []
         for s in SET_TEMP:
-            if s[:-3] == req_id:
+            if s[:-3] == tier:
                 set_row.append(s)
         req = Allcase.objects.filter(tier__in=set_row).values("pk_id", "name", "table_name", "tier")
+        if len(req) == 0 and tier[-3:] is not "000":
+            print("req is []")
+            tier = tier + "000"
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "select allcase.TABLE_NAME,allset_set.CASE_CLAZZ,allset_set.CASE_NAME,allcase.tier from allcase join allset_set on allcase.TABLE_NAME = allset_set.TABLE_NAME where allset_set.SET_NAME = %s and allcase.tier = %s",
+                    [set_id, tier])
+                row = cursor.fetchall()
+            req_temp = []
+            for r in row:
+                req_temp.append(dict(zip(['pk_id', 'name', 'table_name', 'tier'], list(r))))
+                print(req_temp)
+            req = req_temp
         return Response(req)
-
-
-@api_view(['GET', 'POST'])
-def get_case_of_test_set(request):
-    s = request.GET.get('set')  # 测试集
-    tier = request.GET.get('tier') + "000"
-    with connection.cursor() as cursor:
-        cursor.execute(
-            "select allcase.TABLE_NAME,allset_set.CASE_NAME,allset_set.CASE_CLAZZ from allcase join allset_set on allcase.TABLE_NAME = allset_set.TABLE_NAME where allset_set.SET_NAME = %s and allcase.tier = %s",
-            [s, tier])
-        row = cursor.fetchall()
-    return Response(row)
