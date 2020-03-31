@@ -238,7 +238,7 @@ def get_req_of_case(request):
                 row = cursor.fetchall()
             req_temp = []
             for r in row:
-                req_temp.append(dict(zip(['pk_id', 'name', 'table_name', 'tier'], list(r))))
+                req_temp.append(dict(zip(['pk_id', 'name', 'table_name', 'tier' ], list(r))))
                 print(req_temp)
             req = req_temp
         return Response(req)
