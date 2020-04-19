@@ -15,7 +15,7 @@ consumer.set_session_credentials('XXX', 'XXXX', 'ALIYUN') # No need to call this
 consumer.subscribe('YOUR-TOPIC', callback)
 consumer.start()
 
-while True:
-    time.sleep(3600)
+# while True:
+#     time.sleep(3600)
 
-consumer.shutdown()
+# consumer.shutdown()

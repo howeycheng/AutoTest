@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="root@10.1.160.162:22">
+  <component name="PublishConfigData" autoUpload="Always">
     <serverData>
       <paths name="122.51.44.31">
         <serverdata>
@@ -9,10 +9,17 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="root@10.1.160.162:22">
+      <paths name="127.0.0.1">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/chenghao/workspace/AutoTest" local="$PROJECT_DIR$" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Copy of project-level server '127.0.0.1'">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
@@ -20,6 +27,13 @@
         <serverdata>
           <mappings>
             <mapping deploy="/home/howeycheng/AutoTest" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@127.0.0.1:22">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
