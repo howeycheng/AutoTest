@@ -1,10 +1,6 @@
 # Create your views here.
-import json
-from collections import OrderedDict
 
 from django.db import connection
-from django.http import HttpResponse, JsonResponse
-from django.utils import http
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
