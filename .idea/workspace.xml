@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/howey.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/rocketmq/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rocketmq/producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +238,7 @@
       <workItem from="1589029011506" duration="2244000" />
       <workItem from="1589036181184" duration="1292000" />
       <workItem from="1589087134411" duration="1520000" />
-      <workItem from="1589094627739" duration="2513000" />
+      <workItem from="1589094627739" duration="2744000" />
     </task>
     <task id="LOCAL-00001" summary="增加测试集">
       <created>1575858715396</created>
@@ -293,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588610349326</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="添加run接口">
+      <created>1589100483952</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589100483952</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +317,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="增加测试集" />
     <MESSAGE value="完成测试集下用例查询接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成测试集下用例查询接口" />
+    <MESSAGE value="添加run接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加run接口" />
   </component>
   <component name="WindowStateProjectService">
     <state x="427" y="607" width="816" height="536" key="#Deployment" timestamp="1585719068453">
@@ -336,9 +340,10 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="960" y="478" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.40.2560.1400@0.40.2560.1400" timestamp="1586587591153" />
-    <state x="745" y="181" key="CommitChangelistDialog2" timestamp="1588610348666">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="745" y="176" key="CommitChangelistDialog2" timestamp="1589100483283">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1589100483283" />
     <state x="745" y="181" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1588610348666" />
     <state x="745" y="216" key="CommitChangelistDialog2/0.40.2560.1400@0.40.2560.1400" timestamp="1587309164848" />
     <state x="977" y="426" key="FileChooserDialogImpl" timestamp="1586185545201">
@@ -400,9 +405,10 @@
     <state x="149" y="212" key="SettingsEditor/0.30.1280.994@0.30.1280.994" timestamp="1585118348041" />
     <state x="422" y="242" key="SettingsEditor/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1585658662023" />
     <state x="506" y="489" width="998" height="854" key="SettingsEditor/0.40.2560.1400@0.40.2560.1400" timestamp="1586534718379" />
-    <state x="718" y="368" key="Vcs.Push.Dialog.v2" timestamp="1588610353982">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="718" y="358" key="Vcs.Push.Dialog.v2" timestamp="1589100489193">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="718" y="358" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1589100489193" />
     <state x="718" y="368" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1588610353982" />
     <state x="539" y="299" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1585662718113" />
     <state x="718" y="398" key="Vcs.Push.Dialog.v2/0.40.2560.1400@0.40.2560.1400" timestamp="1587309170006" />

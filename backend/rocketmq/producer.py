@@ -2,6 +2,7 @@ import time
 
 from rocketmq.client import Producer, Message
 
+from AutoTest.settings import DATABASES
 from backend.rocketmq.get_case import GetCase
 
 
@@ -35,7 +36,11 @@ class MyProducer:
 
     def producing(self):
         msg = Message(self.topic)
-        getter = GetCase("127.0.0.1", 3306, "root", "root", "testcenter_24", self.msg)
+        database = DATABASES.get('NAME')
+        user = DATABASES.get('USER')
+        password = DATABASES.get('PASSWORD')
+        ip = DATABASES.get('HOST')
+        getter = GetCase(ip, 3306, user, password, database, self.msg)
         case_data = getter.get_case_data()
         msg.set_keys(self.msg)
         msg.set_tags('')
