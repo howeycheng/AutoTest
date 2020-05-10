@@ -23,4 +23,5 @@ urlpatterns = [
     path('set/', views.get_set, name='set'),
     path('casesInSet/', views.get_cases_in_set, name='casesInSet'),
     path('reqOfCase/', views.get_req_of_case, name='reqOfCase'),
+    path('run/', views.run, name='run'),
 ]

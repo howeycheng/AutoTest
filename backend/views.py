@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import *
+from .rocketmq.producer import MyProducer
 
 SET_TEMP = []
 
@@ -238,7 +239,19 @@ def get_req_of_case(request):
                 row = cursor.fetchall()
             req_temp = []
             for r in row:
-                req_temp.append(dict(zip(['pk_id', 'name', 'table_name', 'tier' ], list(r))))
+                req_temp.append(dict(zip(['pk_id', 'name', 'table_name', 'tier'], list(r))))
                 print(req_temp)
             req = req_temp
         return Response(req)
+
+
+@api_view(['GET', 'POST'])
+def run(request):
+    namesrv_addr = request.GET.get('namesrv_addr')
+    topic = request.GET.get('topic')
+    msg = request.GET.get('msg')
+    my_producer = MyProducer(namesrv_addr, topic, msg)
+    my_producer.start()
+    my_producer.producing()
+    my_producer.shutdown()
+    return Response()
