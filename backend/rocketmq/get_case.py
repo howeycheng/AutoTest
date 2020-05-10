@@ -16,7 +16,7 @@ from collections import OrderedDict
 class GetCase:
 
     def __init__(self, ip, port, user_name, pass_word, database, case_name):
-        self.port = port
+        self.port = int(port)
         self.ip = ip
         self.user_name = user_name
         self.pass_word = pass_word
@@ -36,9 +36,11 @@ class GetCase:
         # case_name = "担保品买入-单笔委托最低数量,并待报撤单-深-[主板]000001"  # type: str
         dict_case = {}
         # SQL 查询语句
-        sql = "SELECT * FROM allcase_set_io WHERE SET_NAME = (SELECT TABLE_NAME FROM allcase WHERE NAME = %s) ORDER BY sequence"
-        sql2 = "SELECT * FROM allcase_set_io_outparam WHERE SET_NAME = (SELECT TABLE_NAME FROM `allcase` WHERE `NAME` " \
-               "= %s) AND TYPE = 3 ORDER BY name"
+        # sql = "SELECT * FROM allcase_set_io WHERE SET_NAME = (SELECT TABLE_NAME FROM allcase WHERE NAME = %s) ORDER BY sequence"
+        sql = "SELECT * FROM allcase_set_io WHERE SET_NAME = %s ORDER BY sequence"
+        # sql2 = "SELECT * FROM allcase_set_io_outparam WHERE SET_NAME = (SELECT TABLE_NAME FROM `allcase` WHERE `NAME` " \
+        #        "= %s) AND TYPE = 3 ORDER BY name"
+        sql2 = "SELECT * FROM allcase_set_io_outparam WHERE SET_NAME = %s AND TYPE = 3 ORDER BY name"
         dic_value_pass = {}
 
         try:

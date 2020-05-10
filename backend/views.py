@@ -247,11 +247,14 @@ def get_req_of_case(request):
 
 @api_view(['GET', 'POST'])
 def run(request):
-    namesrv_addr = request.GET.get('namesrv_addr')
+    namesrv_addr = request.GET.get('nameSrvAddr')
     topic = request.GET.get('topic')
     msg = request.GET.get('msg')
+    print(namesrv_addr)
+    print(topic)
+    print(msg)
     my_producer = MyProducer(namesrv_addr, topic, msg)
     my_producer.start()
-    my_producer.producing()
+    ret = my_producer.producing()
     my_producer.shutdown()
-    return Response()
+    return Response(ret)
