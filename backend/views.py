@@ -1,4 +1,7 @@
 # Create your views here.
+import json
+from collections import OrderedDict
+
 from django.db import connection
 from django.http import HttpResponse, JsonResponse
 from django.utils import http
@@ -249,12 +252,9 @@ def get_req_of_case(request):
 def run(request):
     namesrv_addr = request.GET.get('nameSrvAddr')
     topic = request.GET.get('topic')
-    msg = request.GET.get('msg')
-    print(namesrv_addr)
-    print(topic)
-    print(msg)
-    my_producer = MyProducer(namesrv_addr, topic, msg)
+    set_names = request.GET.get('setNames')
+    my_producer = MyProducer(namesrv_addr, topic)
     my_producer.start()
-    ret = my_producer.producing()
+    ret = my_producer.producing(set_names.split(','))
     my_producer.shutdown()
     return Response(ret)
