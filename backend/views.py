@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import *
-from .rocketmq.producer import MyProducer
+# from .rocketmq.producer import MyProducer
 
 SET_TEMP = []
 
@@ -20,9 +20,9 @@ def get_req(request):
     req = []
     rqid = request.GET.get('rqid')  # 需求id
     if rqid is None:  # 查询需求根节点
-        cases = Requirement.objects.filter(parent_id=0).values('rqid', 'name', 'parent_id')
+        cases = Requirement.objects.filter(parent_id=0).values('id', 'name', 'parent_id')
     elif rqid is not None:  # 查询点击节点子需求
-        cases = Requirement.objects.filter(parent_id=rqid).values('rqid', 'name', 'parent_id')
+        cases = Requirement.objects.filter(parent_id=rqid).values('id', 'name', 'parent_id')
     return Response(cases)
 
 
@@ -34,7 +34,7 @@ def get_scene(request):
     :return:
     """
     rqid = request.GET.get('rqid')  # 需求ID
-    scene = TcReqScene.objects.filter(fk_req_id=rqid).values('pk_id', 'scene_name')
+    scene = ReqScene.objects.filter(req_id=rqid).values('id', 'scene_name')
     return Response(scene)
 
 
@@ -46,7 +46,7 @@ def get_scene_detail(request):
     :return:
     """
     rqid = request.GET.get('rqid')  # 需求id
-    scene = TcSceneSet.objects.filter(fk_scene_id=rqid).values('case_name', 'fk_com_id').order_by('wl_action')
+    scene = SceneSet.objects.filter(scene_id=rqid).values('component_name', 'com_id').order_by('order_id')
     return Response(scene)
 
 
@@ -58,7 +58,7 @@ def get_cases(request):
     :return:
     """
     rqid = request.GET.get('rqid')
-    scene = Allcase.objects.filter(fk_scene_id=rqid).values('name', 'table_name')
+    scene = Cases.objects.filter(scene_id=rqid).values('name', 'case_id')
     return Response(scene)
 
 
@@ -70,7 +70,7 @@ def get_cases_io(request):
     :return:
     """
     case_name = request.GET.get('case_name')  #
-    scenes = AllcaseSetIo.objects.filter(set_name=case_name).values('description', 'value').order_by('sequence')
+    scenes = SceneSetIo.objects.filter(name=case_name).values('description', 'value').order_by('sequence')
     case_io = []
     for scene in scenes:
         name = scene['description'].split("\0")
@@ -87,11 +87,11 @@ def get_component_col(request):
     :return:
     """
     component = request.GET.get('component')  #
-    component_id = Component.objects.filter(scriptname=component).values('pk_id')
-    component_col = TcConstraintsRule.objects.filter(fk_com_id=component_id[0]['pk_id']).values('target_field',
+    component_id = Components.objects.filter(script_name=component).values('id')
+    component_col = ParameterRules.objects.filter(fk_com_id=component_id[0]['id']).values('target_field',
                                                                                                 'description',
-                                                                                                'paramvalue').order_by(
-        'pk_id')
+                                                                                                'parameter_value').order_by(
+        'id')
     return Response(component_col)
 
 
@@ -103,14 +103,14 @@ def get_scene_params(request):
     :return:
     """
     rqid = request.GET.get('rqid')  # 场景id
-    component_ids = TcSceneSet.objects.filter(fk_scene_id=rqid).values('fk_com_id', 'case_name').order_by('wl_action')
+    component_ids = SceneSet.objects.filter(scene_id=rqid).values('com_id', 'component_name').order_by('order_id')
     components_params = []
     for component_id in component_ids:
-        component_col = TcConstraintsRule.objects.filter(fk_com_id=component_id['fk_com_id']).values('target_field',
+        component_col = ParameterRules.objects.filter(fk_com_id=component_id['com_id']).values('target_field',
                                                                                                      'description',
-                                                                                                     'paramvalue').order_by(
-            'pk_id')
-        components_params.append({component_id['case_name']: component_col})
+                                                                                                     'parameter_value').order_by(
+            'id')
+        components_params.append({component_id['component_name']: component_col})
     return Response(components_params)
 
 
@@ -124,20 +124,20 @@ def get_scene_cases_io(request):
     rqid = request.GET.get('rqid')  # 场景ID
     current_page = int(request.GET.get('currentPage'))  # 当前页数
     page_size = int(request.GET.get('pageSize'))  # 每页数据数
-    cases_list = Allcase.objects.filter(fk_scene_id=rqid).values('table_name', 'name').order_by('name')[
+    cases_list = Cases.objects.filter(scene_id=rqid).values('case_id', 'name').order_by('name')[
                  (current_page - 1) * page_size:current_page * page_size]
     cases_io = []
     for case in cases_list:
-        case_id = case.get('table_name')
+        case_id = case.get('case_id')
         case_name = case.get('name')
-        case_io_all = AllcaseSetIo.objects.filter(set_name=case_id).values('name', 'description', 'value',
+        case_io_all = CaseSetIo.objects.filter(case_id=case_id).values('name', 'description', 'value',
                                                                            'sequence').order_by('sequence')
         case_io_one = {'name': case_name}
         for set_io in case_io_all:
-            name = set_io['description'].split("\0")
+            description = set_io['description'].split("\0")
             io_value = set_io['value'].split("\0")
             sequence = set_io['sequence']
-            set_io_dict = dict(zip(name, io_value))
+            set_io_dict = dict(zip(description, io_value))
             for key, value in set_io_dict.items():  # 暂时将各个组件IO放在一个字典中，用sequence标识区分
                 case_io_one["sequence_" + str(sequence) + "_" + key] = value.lstrip('[').rstrip(']')
         cases_io.append(case_io_one)
@@ -153,7 +153,7 @@ def get_scene_set_io(request):
     """
     rqid = request.GET.get('rqid')  # 场景id
     type = request.GET.get('type')  # 数据类型
-    set_io = TcSceneSetIo.objects.filter(fk_scene_id=rqid, type=type).values('name', 'assign').order_by(
+    set_io = SceneSetIo.objects.filter(scene_id=rqid, type=type).values('name', 'assign').order_by(
         'sequence')
     return Response(set_io)
 
@@ -167,15 +167,17 @@ def get_set(request):
     """
     level = request.GET.get('level')  # 级别
     if level == '0':
-        s = Allset.objects.filter(level=0).values('pk_id', 'group_name').order_by(
-            'pk_id')
-        # 统一输出格式
+        s = Sets.objects.filter(level=0).values('id', 'group_name').order_by(
+            'id')
         for index in range(len(s)):
             s[index]['name'] = s[index]['group_name']
     else:
-        pk_id = request.GET.get('pk_id')  # 测试集ID
-        s = Allset.objects.filter(parent_id=pk_id).values('pk_id', 'name', 'table_name').order_by(
-            'pk_id')
+        id = request.GET.get('id')  # 测试集ID
+        s = Sets.objects.filter(parent_id=id).values('id', 'set_name', 'set_id').order_by(
+            'id')
+    # 统一输出格式
+        for index in range(len(s)):
+            s[index]['name'] = s[index]['set_name']
     return Response(s)
 
 
@@ -187,7 +189,7 @@ def get_cases_in_set(request):
     :return:
     """
     set = request.GET.get('set')
-    cases = AllsetSet.objects.filter(set_name=set).values('case_name', 'case_clazz', 'table_name')
+    cases = CasesInSet.objects.filter(set_name=set).values('case_name', 'case_clazz', 'table_name')
     return Response(cases)
 
 
@@ -206,7 +208,7 @@ def get_req_of_case(request):
         SET_TEMP = []
         with connection.cursor() as cursor:
             cursor.execute(
-                "select distinct allcase.tier from allcase join allset_set on allcase.TABLE_NAME = allset_set.TABLE_NAME where allset_set.SET_NAME = %s",
+                "select distinct cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s",
                 [set_id])
             row = cursor.fetchall()
         row_list = []
@@ -220,26 +222,24 @@ def get_req_of_case(request):
                 if r[0][0:i + 3] not in SET_TEMP:
                     SET_TEMP.append(r[0][0:i + 3])
                 i = i + 3
-        req = Allcase.objects.filter(tier__in=row_list).values("pk_id", "name", "table_name", "tier")
+        req = Cases.objects.filter(tier__in=row_list).values("id", "name", "case_id", "tier")
         return Response(req)
     else:
         set_row = []
         for s in SET_TEMP:
             if s[:-3] == tier:
                 set_row.append(s)
-        req = Allcase.objects.filter(tier__in=set_row).values("pk_id", "name", "table_name", "tier")
+        req = Cases.objects.filter(tier__in=set_row).values("id", "name", "case_id", "tier")
         if len(req) == 0 and tier[-3:] is not "000":
-            print("req is []")
             tier = tier + "000"
             with connection.cursor() as cursor:
                 cursor.execute(
-                    "select allcase.TABLE_NAME,allset_set.CASE_CLAZZ,allset_set.CASE_NAME,allcase.tier from allcase join allset_set on allcase.TABLE_NAME = allset_set.TABLE_NAME where allset_set.SET_NAME = %s and allcase.tier = %s",
+                    "select cases.case_id,cases_in_set.name,cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s and cases.tier = %s",
                     [set_id, tier])
                 row = cursor.fetchall()
             req_temp = []
             for r in row:
-                req_temp.append(dict(zip(['pk_id', 'name', 'table_name', 'tier'], list(r))))
-                print(req_temp)
+                req_temp.append(dict(zip(['id', 'name', 'tier'], list(r))))
             req = req_temp
         return Response(req)
 

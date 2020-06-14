@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'AutoTest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'auto_test',
+        'NAME': 'cases_manager',
         'USER': 'root',
         'PASSWORD': 'root',
         # 'HOST': '10.1.160.162',
         # 'HOST': '122.51.44.31',
-        'HOST': '127.0.0.1',
+        'HOST': '10.1.160.162',
         'PORT': '3306'
     }
 }

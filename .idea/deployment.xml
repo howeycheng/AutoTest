@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@10.1.160.162:22">
     <serverData>
-      <paths name="122.51.44.31">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/AutoTest" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="127.0.0.1">
         <serverdata>
           <mappings>
@@ -16,24 +9,10 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Copy of project-level server '127.0.0.1'">
+      <paths name="root@10.1.160.162:22">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="root@122.51.44.31:22">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/howeycheng/AutoTest" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="root@127.0.0.1:22">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/tmp/pycharm_project_886" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

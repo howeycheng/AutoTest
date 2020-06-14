@@ -3,7 +3,7 @@ from collections import OrderedDict
 
 from rocketmq.client import Producer, Message
 
-from backend.models import AllcaseSetIoOutparam, AllcaseSetIo
+from backend.models import CasesParameters, SceneSetIo
 
 
 def get_case_io(set_name):
@@ -14,11 +14,11 @@ def get_case_io(set_name):
     """
     dict_case = {}
     dic_value_pass = {}
-    a = AllcaseSetIoOutparam.objects.filter(set_name=set_name, type=3).order_by('name').values('name', 'assign')
+    a = CasesParameters.objects.filter(set_name=set_name, type=3).order_by('name').values('name', 'assign')
     for i in a:
         # print(i)
         dic_value_pass[i['assign']] = i['name']
-    b = AllcaseSetIo.objects.filter(set_name=set_name).order_by('sequence').values('name', 'value', 'description')
+    b = SceneSetIo.objects.filter(set_name=set_name).order_by('sequence').values('name', 'value', 'description')
     dic = OrderedDict()
     for j in b:
         # print(j)
