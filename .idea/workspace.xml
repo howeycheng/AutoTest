@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/remote-mappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AutoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AutoTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoTest/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoTest/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/rocketmq/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rocketmq/producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/css/app.e0ca7e40.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/css/chunk-vendors.cc76e646.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/img/ionicons.a2c4a261.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dist/static/img/ionicons.a2c4a261.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/js/app.dbcce146.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/js/app.dbcce146.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/js/chunk-vendors.ba3ea9df.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/js/chunk-vendors.ba3ea9df.js.map" beforeDir="false" />
+    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="优化">
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/css/app.82e3d844.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/css/chunk-vendors.5bf618ef.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/app.2e63bd37.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/app.2e63bd37.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/chunk-vendors.652c6bde.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/chunk-vendors.652c6bde.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/dist/title.ico" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +280,7 @@
       <workItem from="1591785774715" duration="5442000" />
       <workItem from="1591858808863" duration="11906000" />
       <workItem from="1592039150141" duration="49000" />
-      <workItem from="1592039269982" duration="1306000" />
+      <workItem from="1592039269982" duration="2116000" />
     </task>
     <task id="LOCAL-00001" summary="增加测试集">
       <created>1575858715396</created>
@@ -370,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589126437643</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="优化">
+      <created>1592114909320</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1592114909320</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +388,8 @@
     <MESSAGE value="增加测试集" />
     <MESSAGE value="完成测试集下用例查询接口" />
     <MESSAGE value="添加run接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加run接口" />
+    <MESSAGE value="优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化" />
   </component>
   <component name="WindowStateProjectService">
     <state x="460" y="485" width="989" height="402" key="#Deployment" timestamp="1590410882744">
@@ -424,11 +421,12 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="960" y="478" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.40.2560.1400@0.40.2560.1400" timestamp="1586587591153" />
-    <state x="745" y="176" key="CommitChangelistDialog2" timestamp="1589126437000">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="559" y="162" key="CommitChangelistDialog2" timestamp="1592114964909">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1589126437000" />
     <state x="745" y="181" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1588610348666" />
+    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592114964909" />
     <state x="745" y="216" key="CommitChangelistDialog2/0.40.2560.1400@0.40.2560.1400" timestamp="1587309164848" />
     <state x="92" y="122" width="1736" height="866" key="DirDiffDialog" timestamp="1590410491743">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -439,37 +437,37 @@
     </state>
     <state x="733" y="320" key="FileChooserDialogImpl/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1590410295780" />
     <state x="977" y="426" key="FileChooserDialogImpl/0.40.2560.1400@0.40.2560.1400" timestamp="1586185545201" />
-    <state width="1877" height="495" key="GridCell.Tab.0.bottom" timestamp="1591945024411">
+    <state width="1877" height="260" key="GridCell.Tab.0.bottom" timestamp="1592117597558">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1500" height="350" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1589126132380" />
     <state width="2517" height="634" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1588685970984" />
     <state width="1237" height="430" key="GridCell.Tab.0.bottom/0.30.1280.994@0.30.1280.994" timestamp="1585119655548" />
-    <state width="1877" height="495" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591945024411" />
+    <state width="1877" height="260" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592117597558" />
     <state width="2517" height="649" key="GridCell.Tab.0.bottom/0.40.2560.1400@0.40.2560.1400" timestamp="1588603804051" />
-    <state width="1877" height="495" key="GridCell.Tab.0.center" timestamp="1591945024411">
+    <state width="1877" height="260" key="GridCell.Tab.0.center" timestamp="1592117597558">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1500" height="350" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1589126132380" />
     <state width="2517" height="634" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1588685970984" />
     <state width="1237" height="430" key="GridCell.Tab.0.center/0.30.1280.994@0.30.1280.994" timestamp="1585119655548" />
-    <state width="1877" height="495" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591945024411" />
+    <state width="1877" height="260" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592117597558" />
     <state width="2517" height="649" key="GridCell.Tab.0.center/0.40.2560.1400@0.40.2560.1400" timestamp="1588603804051" />
-    <state width="1877" height="495" key="GridCell.Tab.0.left" timestamp="1591945024411">
+    <state width="1877" height="260" key="GridCell.Tab.0.left" timestamp="1592117597557">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1500" height="350" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1589126132380" />
     <state width="2517" height="634" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1588685970984" />
     <state width="1237" height="430" key="GridCell.Tab.0.left/0.30.1280.994@0.30.1280.994" timestamp="1585119655548" />
-    <state width="1877" height="495" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591945024411" />
+    <state width="1877" height="260" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592117597557" />
     <state width="2517" height="649" key="GridCell.Tab.0.left/0.40.2560.1400@0.40.2560.1400" timestamp="1588603804050" />
-    <state width="1877" height="495" key="GridCell.Tab.0.right" timestamp="1591945024411">
+    <state width="1877" height="260" key="GridCell.Tab.0.right" timestamp="1592117597558">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1500" height="350" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1589126132380" />
     <state width="2517" height="634" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1588685970984" />
     <state width="1237" height="430" key="GridCell.Tab.0.right/0.30.1280.994@0.30.1280.994" timestamp="1585119655548" />
-    <state width="1877" height="495" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591945024411" />
+    <state width="1877" height="260" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592117597558" />
     <state width="2517" height="649" key="GridCell.Tab.0.right/0.40.2560.1400@0.40.2560.1400" timestamp="1588603804051" />
     <state width="1376" height="491" key="GridCell.Tab.1.bottom" timestamp="1587309260927">
       <screen x="0" y="40" width="2560" height="1400" />
@@ -522,7 +520,6 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="1175" y="398" key="git4idea.merge.GitPullDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1585662792249" />
-    <state x="1566" y="531" key="git4idea.merge.GitPullDialog/0.40.2560.1400@0.40.2560.1400" timestamp="1583332313861" />
     <state x="700" y="779" key="publish.login" timestamp="1585719056664">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
