@@ -189,7 +189,7 @@ def get_cases_in_set(request):
     :return:
     """
     set = request.GET.get('set')
-    cases = CasesInSet.objects.filter(set_name=set).values('case_name', 'case_clazz', 'table_name')
+    cases = CasesInSet.objects.filter(set_id=set).values('name', 'case_id').order_by('order_id')
     return Response(cases)
 
 

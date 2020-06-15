@@ -571,3 +571,14 @@ class CaseSetIo(models.Model):
         db_table = 'case_set_io'
         unique_together = (('project_id', 'case_id', 'name', 'assign'),)
 
+
+class SetReq(models.Model):
+    id = models.IntegerField(primary_key=True)
+    parent_id = models.IntegerField()
+    name = models.CharField(max_length=400)
+    set_id = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'set_req'
+        unique_together = (('id', 'set_id'),)
