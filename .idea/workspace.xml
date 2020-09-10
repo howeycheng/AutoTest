@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/dist/static/css/app.c9a6bc6f.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/app.9a5dbff4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/dist/static/js/app.9a5dbff4.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AutoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AutoTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoTest/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoTest/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/css/app.82e3d844.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/img/ionicons.a2c4a261.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dist/static/img/ionicons.a2c4a261.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/js/app.2e63bd37.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/js/app.2e63bd37.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dist/static/js/chunk-vendors.652c6bde.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dist/static/js/chunk-vendors.652c6bde.js" afterDir="false" />
-    </list>
+    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -380,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599740187965</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="完成发送执行用例">
+      <created>1599743555741</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1599743555741</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,7 +396,8 @@
     <MESSAGE value="完成测试集下用例查询接口" />
     <MESSAGE value="添加run接口" />
     <MESSAGE value="优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化" />
+    <MESSAGE value="完成发送执行用例" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成发送执行用例" />
   </component>
   <component name="WindowStateProjectService">
     <state x="989" y="638" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599740289558">
@@ -411,10 +405,10 @@
     </state>
     <state x="989" y="638" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599740289558" />
     <state x="425" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591796896904" />
-    <state x="745" y="176" key="CommitChangelistDialog2" timestamp="1599740187217">
+    <state x="745" y="176" key="CommitChangelistDialog2" timestamp="1599743554635">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1599740187217" />
+    <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743554635" />
     <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592114964909" />
     <state width="1640" height="492" key="GridCell.Tab.0.bottom" timestamp="1599743281618">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -445,6 +439,10 @@
     </state>
     <state x="149" y="212" key="SettingsEditor/0.30.1280.994@0.30.1280.994" timestamp="1591922714382" />
     <state x="252" y="290" width="998" height="716" key="SettingsEditor/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591796786261" />
+    <state x="901" y="500" key="Vcs.Push.Dialog.v2" timestamp="1599743561632">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="901" y="500" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743561632" />
     <state x="638" y="503" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1591785967729">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
