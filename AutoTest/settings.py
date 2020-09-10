@@ -83,9 +83,9 @@ DATABASES = {
         'NAME': 'cases_manager',
         'USER': 'root',
         'PASSWORD': 'root',
-        # 'HOST': '10.1.160.162',
+        'HOST': '127.0.0.1',
         # 'HOST': '122.51.44.31',
-        'HOST': '10.1.160.162',
+        # 'HOST': '10.1.160.162',
         'PORT': '3306'
     }
 }
