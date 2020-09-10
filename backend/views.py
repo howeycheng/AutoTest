@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from .models import *
 
 # from .rocketmq.producer import MyProducer
+from .rocketmq.producer import MyProducer
 
 SET_TEMP = []
 
@@ -235,12 +236,12 @@ def get_req_of_case(request):
             tier = tier + "000"
             with connection.cursor() as cursor:
                 cursor.execute(
-                    "select cases.case_id,cases_in_set.name,cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s and cases.tier = %s",
+                    "select cases.id,cases_in_set.name,cases.case_id,cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s and cases.tier = %s",
                     [set_id, tier])
                 row = cursor.fetchall()
             req_temp = []
             for r in row:
-                req_temp.append(dict(zip(['id', 'name', 'tier'], list(r))))
+                req_temp.append(dict(zip(['id', 'name', 'case_id', 'tier'], list(r))))
             req = req_temp
         return Response(req)
 
@@ -257,25 +258,42 @@ def run(request):
     return Response(ret)
 
 
-@api_view(['GET', 'POST'])
-def get_req_in_set(request):
-    """
-    获取测试集下场景
-    :param request:
-    :return:
-    """
-    set = request.GET.get('set')
-    id = request.GET.get('id')
-    allReq = []
-    get_req_leaf_in_set(set, id, allReq)
-    print(allReq)
-    return Response(allReq)
-
-
 def get_req_leaf_in_set(set, id, allReq):
-    req = SetReq.objects.filter(set_id=set, parent_id=id).values('id', 'parent_id', 'name').order_by('id')
+    req = SetReq.objects.filter(set_id=set, parent_id=id).values('id', 'parent_id', 'name', 'tier').order_by('id')
     if len(req) == 0:
-        allReq.append(SetReq.objects.filter(set_id=set, id=id).values('id', 'parent_id', 'name').order_by('id'))
+        id = SetReq.objects.filter(set_id=set, id=id).values('id').order_by('id')
+        for i in id:
+            if i['id'] not in allReq:
+                allReq.append(i['id'])
     else:
         for child in req:
             get_req_leaf_in_set(set, child['id'], allReq)
+
+
+@api_view(['GET', 'POST'])
+def get_cases_to_run(request):
+    # 用例或场景id
+    checkedCases = request.GET.get('checkedCases').split(',')
+    # 测试集id
+    set = request.GET.get('set')
+    cases = []
+    reqAll = []
+    # 遍历id,若已是用例id,直接将其加入cases列表,若是场景id,则循环递归出该场景下所有用例id并加入cases列表
+    for node in checkedCases:
+        case_id = Cases.objects.filter(id=node).values('case_id')[0]['case_id']
+        if case_id == None :
+            req = []
+            get_req_leaf_in_set(set, node, req)
+            for r in req:
+                if r not in reqAll:
+                    reqAll.append(r)
+        else:
+            if case_id not in cases:
+                cases.append(case_id)
+    for r in reqAll:
+        case_id_temp = Cases.objects.filter(parent_id=r).values('case_id').order_by('id')
+        for case in case_id_temp:
+            case_id = CasesInSet.objects.filter(case_id=case['case_id'], set_id=set).values('case_id')
+            if case['case_id'] not in cases and len(case_id) is not 0:
+                cases.append(case['case_id'])
+    return Response(cases)

@@ -577,6 +577,7 @@ class SetReq(models.Model):
     parent_id = models.IntegerField()
     name = models.CharField(max_length=400)
     set_id = models.CharField(max_length=50)
+    tier = models.CharField(max_length=60)
 
     class Meta:
         managed = False
