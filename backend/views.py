@@ -5,7 +5,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import *
+
 # from .rocketmq.producer import MyProducer
+from .rocketmq.producer import MyProducer
 
 SET_TEMP = []
 
@@ -89,8 +91,8 @@ def get_component_col(request):
     component = request.GET.get('component')  #
     component_id = Components.objects.filter(script_name=component).values('id')
     component_col = ParameterRules.objects.filter(fk_com_id=component_id[0]['id']).values('target_field',
-                                                                                                'description',
-                                                                                                'parameter_value').order_by(
+                                                                                          'description',
+                                                                                          'parameter_value').order_by(
         'id')
     return Response(component_col)
 
@@ -107,8 +109,8 @@ def get_scene_params(request):
     components_params = []
     for component_id in component_ids:
         component_col = ParameterRules.objects.filter(fk_com_id=component_id['com_id']).values('target_field',
-                                                                                                     'description',
-                                                                                                     'parameter_value').order_by(
+                                                                                               'description',
+                                                                                               'parameter_value').order_by(
             'id')
         components_params.append({component_id['component_name']: component_col})
     return Response(components_params)
@@ -131,7 +133,7 @@ def get_scene_cases_io(request):
         case_id = case.get('case_id')
         case_name = case.get('name')
         case_io_all = CaseSetIo.objects.filter(case_id=case_id).values('name', 'description', 'value',
-                                                                           'sequence').order_by('sequence')
+                                                                       'sequence').order_by('sequence')
         case_io_one = {'name': case_name}
         for set_io in case_io_all:
             description = set_io['description'].split("\0")
@@ -175,7 +177,7 @@ def get_set(request):
         id = request.GET.get('id')  # 测试集ID
         s = Sets.objects.filter(parent_id=id).values('id', 'set_name', 'set_id').order_by(
             'id')
-    # 统一输出格式
+        # 统一输出格式
         for index in range(len(s)):
             s[index]['name'] = s[index]['set_name']
     return Response(s)
@@ -189,7 +191,7 @@ def get_cases_in_set(request):
     :return:
     """
     set = request.GET.get('set')
-    cases = CasesInSet.objects.filter(set_name=set).values('case_name', 'case_clazz', 'table_name')
+    cases = CasesInSet.objects.filter(set_id=set).values('name', 'case_id').order_by('order_id')
     return Response(cases)
 
 
@@ -234,12 +236,12 @@ def get_req_of_case(request):
             tier = tier + "000"
             with connection.cursor() as cursor:
                 cursor.execute(
-                    "select cases.case_id,cases_in_set.name,cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s and cases.tier = %s",
+                    "select cases.id,cases_in_set.name,cases.case_id,cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s and cases.tier = %s",
                     [set_id, tier])
                 row = cursor.fetchall()
             req_temp = []
             for r in row:
-                req_temp.append(dict(zip(['id', 'name', 'tier'], list(r))))
+                req_temp.append(dict(zip(['id', 'name', 'case_id', 'tier'], list(r))))
             req = req_temp
         return Response(req)
 
@@ -254,3 +256,44 @@ def run(request):
     ret = my_producer.producing(set_names.split(','))
     my_producer.shutdown()
     return Response(ret)
+
+
+def get_req_leaf_in_set(set, id, allReq):
+    req = SetReq.objects.filter(set_id=set, parent_id=id).values('id', 'parent_id', 'name', 'tier').order_by('id')
+    if len(req) == 0:
+        id = SetReq.objects.filter(set_id=set, id=id).values('id').order_by('id')
+        for i in id:
+            if i['id'] not in allReq:
+                allReq.append(i['id'])
+    else:
+        for child in req:
+            get_req_leaf_in_set(set, child['id'], allReq)
+
+
+@api_view(['GET', 'POST'])
+def get_cases_to_run(request):
+    # 用例或场景id
+    checkedCases = request.GET.get('checkedCases').split(',')
+    # 测试集id
+    set = request.GET.get('set')
+    cases = []
+    reqAll = []
+    # 遍历id,若已是用例id,直接将其加入cases列表,若是场景id,则循环递归出该场景下所有用例id并加入cases列表
+    for node in checkedCases:
+        case_id = Cases.objects.filter(id=node).values('case_id')[0]['case_id']
+        if case_id == None :
+            req = []
+            get_req_leaf_in_set(set, node, req)
+            for r in req:
+                if r not in reqAll:
+                    reqAll.append(r)
+        else:
+            if case_id not in cases:
+                cases.append(case_id)
+    for r in reqAll:
+        case_id_temp = Cases.objects.filter(parent_id=r).values('case_id').order_by('id')
+        for case in case_id_temp:
+            case_id = CasesInSet.objects.filter(case_id=case['case_id'], set_id=set).values('case_id')
+            if case['case_id'] not in cases and len(case_id) is not 0:
+                cases.append(case['case_id'])
+    return Response(cases)
