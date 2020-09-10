@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AutoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AutoTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/rocketmq/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rocketmq/producer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +311,7 @@
       <workItem from="1599529019542" duration="87000" />
       <workItem from="1599533274087" duration="3761000" />
       <workItem from="1599545397734" duration="1243000" />
-      <workItem from="1599563711960" duration="22762000" />
+      <workItem from="1599563711960" duration="24972000" />
     </task>
     <task id="LOCAL-00001" summary="增加测试集">
       <created>1575858715396</created>
@@ -422,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592214926204</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="完成测试集待执行用例勾选查询">
+      <created>1599720064518</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1599720064518</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,7 +449,8 @@
     <MESSAGE value="添加run接口" />
     <MESSAGE value="优化" />
     <MESSAGE value="增加setreq模型，关联测试集和场景的关系" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加setreq模型，关联测试集和场景的关系" />
+    <MESSAGE value="完成测试集待执行用例勾选查询" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成测试集待执行用例勾选查询" />
   </component>
   <component name="WindowStateProjectService">
     <state x="128" y="253" width="816" height="660" key="#Deployment" timestamp="1599645270256">
@@ -463,10 +467,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="795" y="444" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599650196366" />
-    <state x="559" y="162" key="CommitChangelistDialog2" timestamp="1592214924741">
+    <state x="559" y="162" key="CommitChangelistDialog2" timestamp="1599720062851">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592214924741" />
+    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599720062851" />
     <state x="92" y="122" width="1096" height="810" key="DiffContextDialog" timestamp="1599541275510">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
@@ -516,10 +520,10 @@
     </state>
     <state x="75" y="183" key="SettingsEditor/0.30.1280.994@0.30.1280.994" timestamp="1599534462149" />
     <state x="252" y="290" width="998" height="716" key="SettingsEditor/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599571413133" />
-    <state x="539" y="299" key="Vcs.Push.Dialog.v2" timestamp="1599564588117">
+    <state x="539" y="299" key="Vcs.Push.Dialog.v2" timestamp="1599720203259">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="539" y="299" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599564588117" />
+    <state x="539" y="299" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599720203259" />
     <state x="425" y="478" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1599534149022">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
