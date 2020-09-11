@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="" />
+    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/AutoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AutoTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/rocketmq/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rocketmq/producer.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +32,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="JupyterTrust" id="d4d5ce72-0193-43e2-bd46-cad16efc5b62" />
+  <component name="JupyterTrust" id="2a999d42-b939-4f50-bc02-e258d335dbaa" />
   <component name="ProjectId" id="1TSYArJSnPDRoGFWnMB3oVzNZab" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -44,7 +49,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Django Server.Linux">
     <configuration name="get_case" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -143,14 +148,14 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="AutoTest.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="sftp://root@10.1.160.162:22/bin/python3" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
+      <option name="port" value="8080" />
+      <option name="host" value="10.1.160.162" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -400,45 +405,45 @@
     <option name="LAST_COMMIT_MESSAGE" value="完成发送执行用例" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="989" y="638" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599740289558">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="425" y="141" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599790321994">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="989" y="638" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599740289558" />
-    <state x="425" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591796896904" />
+    <state x="425" y="141" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790321994" />
     <state x="745" y="176" key="CommitChangelistDialog2" timestamp="1599743554635">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743554635" />
     <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592114964909" />
-    <state width="1640" height="492" key="GridCell.Tab.0.bottom" timestamp="1599743281618">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="506" key="GridCell.Tab.0.bottom" timestamp="1599790624028">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1877" height="260" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592117597558" />
-    <state width="1640" height="492" key="GridCell.Tab.0.center" timestamp="1599743281618">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="506" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790624028" />
+    <state width="1877" height="506" key="GridCell.Tab.0.center" timestamp="1599790624028">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1877" height="260" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592117597558" />
-    <state width="1640" height="492" key="GridCell.Tab.0.left" timestamp="1599743281618">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="506" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790624028" />
+    <state width="1877" height="506" key="GridCell.Tab.0.left" timestamp="1599790624027">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1877" height="260" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592117597557" />
-    <state width="1640" height="492" key="GridCell.Tab.0.right" timestamp="1599743281618">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="506" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790624027" />
+    <state width="1877" height="506" key="GridCell.Tab.0.right" timestamp="1599790624028">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1877" height="260" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592117597558" />
+    <state width="1877" height="506" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790624028" />
     <state x="1011" y="655" key="MultipleFileMergeDialog" timestamp="1599740218016">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1011" y="655" key="MultipleFileMergeDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599740218016" />
-    <state x="149" y="212" width="998" height="716" key="SettingsEditor" timestamp="1591922714382">
-      <screen x="0" y="30" width="1280" height="994" />
+    <state x="252" y="290" width="998" height="716" key="SettingsEditor" timestamp="1599790214108">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="149" y="212" key="SettingsEditor/0.30.1280.994@0.30.1280.994" timestamp="1591922714382" />
-    <state x="252" y="290" width="998" height="716" key="SettingsEditor/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591796786261" />
+    <state x="252" y="290" width="998" height="716" key="SettingsEditor/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790214108" />
     <state x="901" y="500" key="Vcs.Push.Dialog.v2" timestamp="1599743561632">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -457,9 +462,9 @@
     <state x="918" y="584" key="git4idea.ui.GitStashDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599740194263" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AutoTest$producer.coverage" NAME="producer Coverage Results" MODIFIED="1589112532601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
     <SUITE FILE_PATH="coverage/AutoTest$pullconsumer.coverage" NAME="pullconsumer Coverage Results" MODIFIED="1585834705915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
     <SUITE FILE_PATH="coverage/AutoTest$get_case.coverage" NAME="get_case Coverage Results" MODIFIED="1589122648259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
+    <SUITE FILE_PATH="coverage/AutoTest$producer.coverage" NAME="producer Coverage Results" MODIFIED="1589112532601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
     <SUITE FILE_PATH="coverage/AutoTest$push_consumer.coverage" NAME="push_consumer Coverage Results" MODIFIED="1586006658621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
   </component>
 </project>

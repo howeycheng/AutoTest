@@ -61,8 +61,11 @@ class MyProducer:
             message.set_keys(set_name)
             message.set_tags('')
             message.set_body(case_io)
-            res = self.producer.send_sync(message)
-            r.append({"status": res.status, "msg_id": res.msg_id, "offset": res.offset})
+            try:
+                res = self.producer.send_sync(message)
+                r.append({"status": res.status, "msg_id": res.msg_id, "offset": res.offset})
+            except:
+                return "rocketmq.exceptions.ProducerSendSyncFailed"
         return r
 
     def shutdown(self):
