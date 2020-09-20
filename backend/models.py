@@ -583,3 +583,20 @@ class SetReq(models.Model):
         managed = False
         db_table = 'set_req'
         unique_together = (('id', 'set_id'),)
+
+
+class CaseSetIoOutparam(models.Model):
+    project_id = models.PositiveIntegerField(primary_key=True)
+    type = models.IntegerField()
+    name = models.CharField(max_length=150)
+    assign = models.CharField(max_length=150)
+    value = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    state = models.IntegerField(blank=True, null=True)
+    case_id = models.CharField(max_length=50)
+    sequence = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'case_set_io_outparam'
+        unique_together = (('project_id', 'case_id', 'type', 'name', 'assign'),)

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AutoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AutoTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoTest/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoTest/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/rocketmq/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rocketmq/producer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +48,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../robotide" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Django Server.Linux">
@@ -179,6 +179,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -279,6 +280,11 @@
       <workItem from="1591858808863" duration="11906000" />
       <workItem from="1592039150141" duration="49000" />
       <workItem from="1592039269982" duration="2116000" />
+      <workItem from="1600049035544" duration="50000" />
+      <workItem from="1600163960571" duration="112000" />
+      <workItem from="1600397840608" duration="1386000" />
+      <workItem from="1600399579695" duration="1380000" />
+      <workItem from="1600438485290" duration="2826000" />
     </task>
     <task id="LOCAL-00001" summary="增加测试集">
       <created>1575858715396</created>
@@ -378,11 +384,18 @@
       <option name="project" value="LOCAL" />
       <updated>1599743555741</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="完成发送执行用例">
+      <created>1599791083603</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1599791083603</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -405,36 +418,56 @@
     <option name="LAST_COMMIT_MESSAGE" value="完成发送执行用例" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="213" key="#Deployment" timestamp="1600398421982">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="552" y="213" key="#Deployment/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600398421982" />
     <state x="425" y="141" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599790321994">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="989" y="638" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599740289558" />
     <state x="425" y="141" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790321994" />
-    <state x="745" y="176" key="CommitChangelistDialog2" timestamp="1599743554635">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="640" y="289" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600398625032">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="640" y="289" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600398625032" />
+    <state x="559" y="162" key="CommitChangelistDialog2" timestamp="1599791082398">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743554635" />
-    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1592114964909" />
-    <state width="1877" height="506" key="GridCell.Tab.0.bottom" timestamp="1599790624028">
+    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599791082398" />
+    <state x="740" y="309" key="FileChooserDialogImpl" timestamp="1600049083784">
       <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="740" y="309" key="FileChooserDialogImpl/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600049083784" />
+    <state width="2517" height="784" key="GridCell.Tab.0.bottom" timestamp="1600614137583">
+      <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1877" height="506" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790624028" />
-    <state width="1877" height="506" key="GridCell.Tab.0.center" timestamp="1599790624028">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state width="1237" height="420" key="GridCell.Tab.0.bottom/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
+    <state width="1877" height="721" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600412930667" />
+    <state width="2517" height="784" key="GridCell.Tab.0.bottom/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
+    <state width="2517" height="784" key="GridCell.Tab.0.center" timestamp="1600614137583">
+      <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1877" height="506" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790624028" />
-    <state width="1877" height="506" key="GridCell.Tab.0.left" timestamp="1599790624027">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state width="1237" height="420" key="GridCell.Tab.0.center/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
+    <state width="1877" height="721" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600412930667" />
+    <state width="2517" height="784" key="GridCell.Tab.0.center/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
+    <state width="2517" height="784" key="GridCell.Tab.0.left" timestamp="1600614137582">
+      <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1877" height="506" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790624027" />
-    <state width="1877" height="506" key="GridCell.Tab.0.right" timestamp="1599790624028">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state width="1237" height="420" key="GridCell.Tab.0.left/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
+    <state width="1877" height="721" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600412930667" />
+    <state width="2517" height="784" key="GridCell.Tab.0.left/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137582" />
+    <state width="2517" height="784" key="GridCell.Tab.0.right" timestamp="1600614137583">
+      <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1877" height="506" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790624028" />
+    <state width="1237" height="420" key="GridCell.Tab.0.right/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
+    <state width="1877" height="721" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600412930667" />
+    <state width="2517" height="784" key="GridCell.Tab.0.right/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
     <state x="1011" y="655" key="MultipleFileMergeDialog" timestamp="1599740218016">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -442,20 +475,12 @@
     <state x="252" y="290" width="998" height="716" key="SettingsEditor" timestamp="1599790214108">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="149" y="212" key="SettingsEditor/0.30.1280.994@0.30.1280.994" timestamp="1591922714382" />
     <state x="252" y="290" width="998" height="716" key="SettingsEditor/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790214108" />
-    <state x="901" y="500" key="Vcs.Push.Dialog.v2" timestamp="1599743561632">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="676" y="405" key="Vcs.Push.Dialog.v2" timestamp="1599791242512">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="901" y="500" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743561632" />
-    <state x="638" y="503" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1591785967729">
-      <screen x="0" y="30" width="1920" height="1050" />
-    </state>
-    <state x="638" y="503" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591785967729" />
-    <state x="949" y="529" width="622" height="537" key="ftp.server.browser" timestamp="1591786217011">
-      <screen x="0" y="30" width="1920" height="1050" />
-    </state>
-    <state x="949" y="529" width="622" height="537" key="ftp.server.browser/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1591786217011" />
+    <state x="676" y="405" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599791242512" />
     <state x="918" y="584" key="git4idea.ui.GitStashDialog" timestamp="1599740194263">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
