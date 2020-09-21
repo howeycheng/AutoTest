@@ -21,14 +21,15 @@ def get_case_io(set_name):
         dic_value_pass[i['assign']] = i['name']
     b = CaseSetIo.objects.filter(case_id=set_name).order_by('sequence').values('name', 'value', 'description')
     dic = OrderedDict()
-    # c = CasesComponents.objects.filter(case_id=set_name).order_by('order_id').values('component_name', 'component_clazz')
-    # for i in c:
-    #     # print(i)
-    #     dic_comp_models[i['component_name']] = i['component_clazz']
+    c = CasesComponents.objects.filter(case_id=set_name).order_by('order_id').values('component_name', 'component_clazz')
+    for i in c:
+        # print(i)
+        dic_comp_models[i['component_name']] = i['component_clazz']
     for j in b:
         # print(j)
         dict_temp = {}
         name = j['name']
+        dict_temp['component_script_model'] = dic_comp_models[name]
         description = j['description']
         value = j['value']
         for index in range(len(description.split("\0"))):
