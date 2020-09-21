@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="删除models中CasesParameters,该模型暂时无用.">
+    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/rocketmq/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rocketmq/producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +283,8 @@
       <workItem from="1600397840608" duration="1386000" />
       <workItem from="1600399579695" duration="1380000" />
       <workItem from="1600438485290" duration="4178000" />
-      <workItem from="1600664828965" duration="2966000" />
+      <workItem from="1600664828965" duration="3757000" />
+      <workItem from="1600671333158" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="增加测试集">
       <created>1575858715396</created>
@@ -418,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600665563102</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="删除models中CasesParameters,该模型暂时无用.">
+      <created>1600667806412</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1600667806412</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,44 +468,44 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="640" y="289" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600398625032" />
-    <state x="559" y="162" key="CommitChangelistDialog2" timestamp="1600667445808">
+    <state x="559" y="162" key="CommitChangelistDialog2" timestamp="1600667804623">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743554635" />
     <state x="250" y="63" key="CommitChangelistDialog2/0.30.1280.994@0.30.1280.994" timestamp="1600651324511" />
-    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600667445808" />
+    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600667804623" />
     <state x="745" y="207" key="CommitChangelistDialog2/0.30.2560.1410@0.30.2560.1410" timestamp="1600614202607" />
     <state x="740" y="309" key="FileChooserDialogImpl" timestamp="1600049083784">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="740" y="309" key="FileChooserDialogImpl/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600049083784" />
-    <state width="1877" height="532" key="GridCell.Tab.0.bottom" timestamp="1600667450805">
+    <state width="1877" height="513" key="GridCell.Tab.0.bottom" timestamp="1600669225099">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
     <state width="1237" height="420" key="GridCell.Tab.0.bottom/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
-    <state width="1877" height="532" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600667450805" />
+    <state width="1877" height="513" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600669225099" />
     <state width="2517" height="784" key="GridCell.Tab.0.bottom/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
-    <state width="1877" height="532" key="GridCell.Tab.0.center" timestamp="1600667450804">
+    <state width="1877" height="513" key="GridCell.Tab.0.center" timestamp="1600669225098">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
     <state width="1237" height="420" key="GridCell.Tab.0.center/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
-    <state width="1877" height="532" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600667450804" />
+    <state width="1877" height="513" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600669225098" />
     <state width="2517" height="784" key="GridCell.Tab.0.center/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
-    <state width="1877" height="532" key="GridCell.Tab.0.left" timestamp="1600667450804">
+    <state width="1877" height="513" key="GridCell.Tab.0.left" timestamp="1600669225098">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
     <state width="1237" height="420" key="GridCell.Tab.0.left/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
-    <state width="1877" height="532" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600667450804" />
+    <state width="1877" height="513" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600669225098" />
     <state width="2517" height="784" key="GridCell.Tab.0.left/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137582" />
-    <state width="1877" height="532" key="GridCell.Tab.0.right" timestamp="1600667450805">
+    <state width="1877" height="513" key="GridCell.Tab.0.right" timestamp="1600669225099">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1640" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
     <state width="1237" height="420" key="GridCell.Tab.0.right/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
-    <state width="1877" height="532" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600667450805" />
+    <state width="1877" height="513" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600669225099" />
     <state width="2517" height="784" key="GridCell.Tab.0.right/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
     <state x="1011" y="655" key="MultipleFileMergeDialog" timestamp="1599740218016">
       <screen x="0" y="0" width="2560" height="1400" />

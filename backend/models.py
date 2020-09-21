@@ -600,3 +600,31 @@ class CaseSetIoOutparam(models.Model):
         managed = False
         db_table = 'case_set_io_outparam'
         unique_together = (('project_id', 'case_id', 'type', 'name', 'assign'),)
+
+
+class RunSet(models.Model):
+    project_id = models.IntegerField()
+    case_name = models.CharField(max_length=200)
+    case_id = models.CharField(max_length=50, blank=True, null=True)
+    set_id = models.CharField(max_length=50, blank=True, null=True)
+    run_id = models.CharField(max_length=50, blank=True, null=True)
+    status = models.PositiveIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'run_set'
+
+
+class RunSetIo(models.Model):
+    project_id = models.IntegerField()
+    component_name = models.CharField(max_length=200)
+    value = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    status = models.IntegerField(blank=True, null=True)
+    case_id = models.CharField(max_length=50, blank=True, null=True)
+    run_id = models.CharField(max_length=50, blank=True, null=True)
+    order_id = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'run_set_io'
