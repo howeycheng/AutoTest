@@ -281,7 +281,7 @@ def get_cases_to_run(request):
     # 遍历id,若已是用例id,直接将其加入cases列表,若是场景id,则循环递归出该场景下所有用例id并加入cases列表
     for node in checkedCases:
         case_id = Cases.objects.filter(id=node).values('case_id')[0]['case_id']
-        if case_id == None :
+        if case_id == None:
             req = []
             get_req_leaf_in_set(set, node, req)
             for r in req:
@@ -297,3 +297,9 @@ def get_cases_to_run(request):
             if case['case_id'] not in cases and len(case_id) is not 0:
                 cases.append(case['case_id'])
     return Response(cases)
+
+
+@api_view(['GET', 'POST'])
+def get_run(request):
+    run = Run.objects.values('run_name', 'start', 'finish', 'run_id')
+    return Response(run)
