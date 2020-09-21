@@ -602,6 +602,22 @@ class CaseSetIoOutparam(models.Model):
         unique_together = (('project_id', 'case_id', 'type', 'name', 'assign'),)
 
 
+class Run(models.Model):
+    project_id = models.IntegerField(primary_key=True)
+    run_id = models.CharField(max_length=50)
+    run_name = models.CharField(max_length=50)
+    runner = models.CharField(max_length=50, blank=True, null=True)
+    set_id = models.CharField(max_length=50, blank=True, null=True)
+    start = models.DateTimeField(blank=True, null=True)
+    finish = models.DateTimeField(blank=True, null=True)
+    status = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'run'
+        unique_together = (('project_id', 'run_id'),)
+
+
 class RunSet(models.Model):
     project_id = models.IntegerField()
     case_name = models.CharField(max_length=200)
