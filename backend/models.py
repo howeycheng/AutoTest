@@ -414,20 +414,20 @@ class CasesInSet(models.Model):
         db_table = 'cases_in_set'
 
 
-class CasesParameters(models.Model):
-    project_id = models.PositiveIntegerField(primary_key=True)
-    type = models.IntegerField()
-    component = models.CharField(max_length=150)
-    value = models.TextField(blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    state = models.IntegerField(blank=True, null=True)
-    case_id = models.CharField(max_length=50)
-    sequence = models.SmallIntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'cases_parameters'
-        unique_together = (('project_id', 'case_id', 'component'),)
+# class CasesParameters(models.Model):
+#     project_id = models.PositiveIntegerField(primary_key=True)
+#     type = models.IntegerField()
+#     component = models.CharField(max_length=150)
+#     value = models.TextField(blank=True, null=True)
+#     description = models.TextField(blank=True, null=True)
+#     state = models.IntegerField(blank=True, null=True)
+#     case_id = models.CharField(max_length=50)
+#     sequence = models.SmallIntegerField(blank=True, null=True)
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'cases_parameters'
+#         unique_together = (('project_id', 'case_id', 'component'),)
 
 
 class Components(models.Model):

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/rocketmq/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rocketmq/producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +283,7 @@
       <workItem from="1600397840608" duration="1386000" />
       <workItem from="1600399579695" duration="1380000" />
       <workItem from="1600438485290" duration="4178000" />
-      <workItem from="1600664828965" duration="584000" />
+      <workItem from="1600664828965" duration="676000" />
     </task>
     <task id="LOCAL-00001" summary="增加测试集">
       <created>1575858715396</created>
@@ -404,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600651325829</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="修复组件值传递参数无法正常传递的bug">
+      <created>1600665423175</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1600665423175</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,12 +452,12 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="640" y="289" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600398625032" />
-    <state x="250" y="63" key="CommitChangelistDialog2" timestamp="1600651324511">
-      <screen x="0" y="30" width="1280" height="994" />
+    <state x="559" y="162" key="CommitChangelistDialog2" timestamp="1600665421730">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743554635" />
     <state x="250" y="63" key="CommitChangelistDialog2/0.30.1280.994@0.30.1280.994" timestamp="1600651324511" />
-    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599791082398" />
+    <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600665421730" />
     <state x="745" y="207" key="CommitChangelistDialog2/0.30.2560.1410@0.30.2560.1410" timestamp="1600614202607" />
     <state x="740" y="309" key="FileChooserDialogImpl" timestamp="1600049083784">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -492,12 +499,12 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="252" y="290" width="998" height="716" key="SettingsEditor/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790214108" />
-    <state x="451" y="385" key="Vcs.Push.Dialog.v2" timestamp="1600651332228">
-      <screen x="0" y="30" width="1280" height="994" />
+    <state x="676" y="405" key="Vcs.Push.Dialog.v2" timestamp="1600665428010">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="901" y="500" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743561632" />
     <state x="451" y="385" key="Vcs.Push.Dialog.v2/0.30.1280.994@0.30.1280.994" timestamp="1600651332228" />
-    <state x="676" y="405" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599791242512" />
+    <state x="676" y="405" key="Vcs.Push.Dialog.v2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600665428010" />
     <state x="918" y="584" key="git4idea.ui.GitStashDialog" timestamp="1599740194263">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
