@@ -284,7 +284,7 @@
       <workItem from="1600399579695" duration="1380000" />
       <workItem from="1600438485290" duration="4178000" />
       <workItem from="1600664828965" duration="3757000" />
-      <workItem from="1600671333158" duration="2807000" />
+      <workItem from="1600671333158" duration="3301000" />
     </task>
     <task id="LOCAL-00001" summary="增加测试集">
       <created>1575858715396</created>
@@ -447,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600681659028</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="用例数据增加component_script_model字段用于存储组件脚本模型">
+      <created>1600682001179</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1600682001179</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +481,8 @@
     <MESSAGE value="修复组件值传递参数无法正常传递的bug" />
     <MESSAGE value="删除models中CasesParameters,该模型暂时无用." />
     <MESSAGE value="增加日志处理相关models" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加日志处理相关models" />
+    <MESSAGE value="用例数据增加component_script_model字段用于存储组件脚本模型" />
+    <option name="LAST_COMMIT_MESSAGE" value="用例数据增加component_script_model字段用于存储组件脚本模型" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="213" key="#Deployment" timestamp="1600398421982">
@@ -490,11 +498,11 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="640" y="289" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600398625032" />
-    <state x="250" y="63" key="CommitChangelistDialog2" timestamp="1600681657489">
+    <state x="250" y="63" key="CommitChangelistDialog2" timestamp="1600682000014">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743554635" />
-    <state x="250" y="63" key="CommitChangelistDialog2/0.30.1280.994@0.30.1280.994" timestamp="1600681657489" />
+    <state x="250" y="63" key="CommitChangelistDialog2/0.30.1280.994@0.30.1280.994" timestamp="1600682000014" />
     <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600671951581" />
     <state x="745" y="207" key="CommitChangelistDialog2/0.30.2560.1410@0.30.2560.1410" timestamp="1600614202607" />
     <state x="740" y="309" key="FileChooserDialogImpl" timestamp="1600049083784">

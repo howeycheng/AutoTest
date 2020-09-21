@@ -29,7 +29,7 @@ def get_case_io(set_name):
         # print(j)
         dict_temp = {}
         name = j['name']
-        dict_temp['component_script_model'] = dic_comp_models[name]
+        dict_temp['component_script_model'] = ['0',dic_comp_models[name]]
         description = j['description']
         value = j['value']
         for index in range(len(description.split("\0"))):
