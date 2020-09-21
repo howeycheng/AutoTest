@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoTest/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoTest/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/rocketmq/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rocketmq/producer.py" afterDir="false" />
-    </list>
+    <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -284,7 +279,7 @@
       <workItem from="1600163960571" duration="112000" />
       <workItem from="1600397840608" duration="1386000" />
       <workItem from="1600399579695" duration="1380000" />
-      <workItem from="1600438485290" duration="2826000" />
+      <workItem from="1600438485290" duration="3526000" />
     </task>
     <task id="LOCAL-00001" summary="增加测试集">
       <created>1575858715396</created>
@@ -391,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599791083603</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="修复组件值传递参数无法正常传递的bug">
+      <created>1600614204294</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1600614204294</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +417,8 @@
     <MESSAGE value="添加run接口" />
     <MESSAGE value="优化" />
     <MESSAGE value="完成发送执行用例" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成发送执行用例" />
+    <MESSAGE value="修复组件值传递参数无法正常传递的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复组件值传递参数无法正常传递的bug" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="213" key="#Deployment" timestamp="1600398421982">
@@ -431,11 +434,12 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="640" y="289" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600398625032" />
-    <state x="559" y="162" key="CommitChangelistDialog2" timestamp="1599791082398">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="745" y="207" key="CommitChangelistDialog2" timestamp="1600614202607">
+      <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state x="745" y="176" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1599743554635" />
     <state x="559" y="162" key="CommitChangelistDialog2/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599791082398" />
+    <state x="745" y="207" key="CommitChangelistDialog2/0.30.2560.1410@0.30.2560.1410" timestamp="1600614202607" />
     <state x="740" y="309" key="FileChooserDialogImpl" timestamp="1600049083784">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
