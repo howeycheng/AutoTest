@@ -26,5 +26,6 @@ urlpatterns = [
     path('run/', views.run, name='run'),
     path('casesToRun/', views.get_cases_to_run, name='casesToRun'),
     path('runLog/', views.get_run, name='runLog'),
+    path('runLog/set/', views.get_run_set, name='runLogSet'),
     # path('getCaseIo/', views.get_case_io, name='getCaseIo'),
 ]

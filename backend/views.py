@@ -299,7 +299,16 @@ def get_cases_to_run(request):
     return Response(cases)
 
 
+# 获取所有执行记录
 @api_view(['GET', 'POST'])
 def get_run(request):
     run = Run.objects.values('run_name', 'start', 'finish', 'run_id')
     return Response(run)
+
+
+# 获取指定执行记录具体信息
+@api_view(['GET', 'POST'])
+def get_run_set(request):
+    run_id = request.GET.get('run_id')
+    run_set = RunSet.objects.filter(run_id=run_id).values('case_name', 'case_id', 'status')
+    return Response(run_set)
