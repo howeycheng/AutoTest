@@ -310,5 +310,5 @@ def get_run(request):
 @api_view(['GET', 'POST'])
 def get_run_set(request):
     run_id = request.GET.get('run_id')
-    run_set = RunSet.objects.filter(run_id=run_id,status='0').values('case_name', 'case_id', 'status')
+    run_set = RunSet.objects.filter(run_id=run_id, case_type='0').values('case_clazz', 'case_id', 'case_state').order_by('order_id')
     return Response(run_set)

@@ -621,10 +621,14 @@ class Run(models.Model):
 class RunSet(models.Model):
     project_id = models.IntegerField()
     case_name = models.CharField(max_length=200)
+    case_clazz = models.CharField(max_length=200)
+    case_type = models.IntegerField(blank=True, null=True)
     case_id = models.CharField(max_length=50, blank=True, null=True)
+    order_id = models.IntegerField(blank=True, null=True)
+    case_state = models.IntegerField(blank=True, null=True)
     set_id = models.CharField(max_length=50, blank=True, null=True)
     run_id = models.CharField(max_length=50, blank=True, null=True)
-    status = models.PositiveIntegerField(blank=True, null=True)
+    flag = models.PositiveIntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
