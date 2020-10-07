@@ -1,3 +1,4 @@
+# yum install python3-devel libevent-devel mysql-devel gcc
 Django==3.1.2
 django-cors-headers==3.1.0
 django-js-asset==1.2.2
