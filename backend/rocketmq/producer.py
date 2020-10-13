@@ -56,7 +56,7 @@ class MyProducer:
         self.producer = Producer(self.topic)
 
     def start(self):
-        self.producer.set_namesrv_addr(self.namesrv_addr)
+        self.producer.set_name_server_address(self.namesrv_addr)
         self.producer.start()
 
     def producing(self, set_names):
