@@ -1,21 +1,21 @@
+from rocketmq.client import PushConsumer, ConsumeStatus
+from multiprocessing import Process
 import time
-
-from rocketmq.client import PushConsumer
+import os
 
 
 def callback(msg):
-    print(msg.id, msg.body)
+    print(msg.id, str(msg.body, 'utf8'), str(msg.get_property('property'), 'utf8'), str(msg.tags, 'utf8'))
+    return ConsumeStatus.CONSUME_SUCCESS
 
 
-consumer = PushConsumer('CID_XXX')
-consumer.set_namesrv_domain('http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet')
-# For ip and port name server address, use `set_namesrv_addr` method, for example:
-# consumer.set_namesrv_addr('127.0.0.1:9887')
-consumer.set_session_credentials('XXX', 'XXXX', 'ALIYUN') # No need to call this function if you don't use Aliyun.
-consumer.subscribe('YOUR-TOPIC', callback)
-consumer.start()
+def start_consume_message():
+    print("日志处理子进程 子进程PID：", os.getpid(), "对应主进程PID",os.getppid())
+    consumer = PushConsumer('consumer_group')
+    consumer.set_name_server_address('127.0.0.1:9876')
+    consumer.subscribe('TopicTest', callback)
+    print('start consume message')
+    consumer.start()
 
-# while True:
-#     time.sleep(3600)
-
-# consumer.shutdown()
+    while True:
+        time.sleep(3600)

@@ -6,8 +6,15 @@ from rest_framework.response import Response
 
 from .models import *
 
-# from .rocketmq.producer import MyProducer
 from .rocketmq.producer import MyProducer
+from .rocketmq.push_consumer import *
+
+from multiprocessing import Process
+import os
+
+print("当前进程PID ", os.getpid(), "对应父进程PID", os.getppid())
+p1 = Process(target=start_consume_message)
+p1.start()
 
 SET_TEMP = []
 
@@ -310,5 +317,6 @@ def get_run(request):
 @api_view(['GET', 'POST'])
 def get_run_set(request):
     run_id = request.GET.get('run_id')
-    run_set = RunSet.objects.filter(run_id=run_id, case_type='0').values('case_clazz', 'case_id', 'case_state').order_by('order_id')
+    run_set = RunSet.objects.filter(run_id=run_id, case_type='0').values('case_clazz', 'case_id',
+                                                                         'case_state').order_by('order_id')
     return Response(run_set)
