@@ -1,3 +1,4 @@
+# yum install python3-devel libevent-devel mysql-devel gcc
 Django==3.1.2
 django-cors-headers==3.1.0
 django-js-asset==1.2.2
@@ -5,6 +6,6 @@ django-mptt==0.11.0
 djangorestframework==3.12.1
 mysqlclient==2.0.1
 requests==2.24.0
-rocketmq==0.4.4
+rocketmq-client-python=2.0.0
 sqlparse==0.3.1
 urllib3==1.25.10
