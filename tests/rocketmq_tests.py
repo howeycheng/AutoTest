@@ -22,7 +22,7 @@ import time
 
 topic = 'TopicTest'
 gid = 'test'
-name_srv = '127.0.0.1:9876'
+name_srv = '10.1.160.162:9876'
 
 
 def create_message():

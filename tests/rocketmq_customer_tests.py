@@ -22,14 +22,14 @@ import time
 
 
 def callback(msg):
-    print(msg.id, str(msg.body,'utf8'), str(msg.get_property('property'),'utf8'), str(msg.tags,'utf8'))
+    print(msg.id, str(msg.body,'utf8'), str(msg.get_property('用例id'),'utf8'), str(msg.tags,'utf8'))
     return ConsumeStatus.CONSUME_SUCCESS
 
 
 def start_consume_message():
     consumer = PushConsumer('consumer_group')
-    consumer.set_name_server_address('127.0.0.1:9876')
-    consumer.subscribe('TopicTest', callback)
+    consumer.set_name_server_address('10.1.160.162:9876')
+    consumer.subscribe('LOG', callback)
     print('start consume message')
     consumer.start()
 
