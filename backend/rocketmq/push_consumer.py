@@ -2,10 +2,14 @@ from rocketmq.client import PushConsumer, ConsumeStatus
 import time
 import os
 
+from backend.log.log import Log
+
 
 def callback(msg):
-    print(msg.id, str(msg.get_property('用例ID'), 'utf8'), str(msg.tags, 'utf8'))
-    output = str(msg.body, 'utf8')
+    print(msg.id, msg.keys, str(msg.tags, 'utf8'))
+    data = str(msg.body, 'utf8')
+    log = Log()
+    log.init_log_data(data, str(msg.keys, 'utf8'), str(msg.tags, 'utf8'))
     return ConsumeStatus.CONSUME_SUCCESS
 
 

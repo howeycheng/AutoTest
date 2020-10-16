@@ -5,7 +5,7 @@ from rocketmq.client import Producer, Message
 
 from backend.models import CaseSetIoOutparam, CaseSetIo, CasesComponents
 
-
+import time
 def get_case_io(set_name):
     """
     获取指定用例入参
@@ -15,10 +15,12 @@ def get_case_io(set_name):
     dict_case = {}
     dic_value_pass = {}
     dic_comp_models = {}
+    # 获取值传递信息
     a = CaseSetIoOutparam.objects.filter(case_id=set_name, type=3).order_by('name').values('name', 'assign')
     for i in a:
         # print(i)
         dic_value_pass[i['assign']] = i['name']
+    #     获取入参
     b = CaseSetIo.objects.filter(case_id=set_name).order_by('sequence').values('name', 'value', 'description')
     dic = OrderedDict()
     c = CasesComponents.objects.filter(case_id=set_name).order_by('order_id').values('component_name', 'component_clazz')
@@ -62,10 +64,13 @@ class MyProducer:
     def producing(self, set_names):
         r = []
         for set_name in set_names:
+            start_time = time.clock()
             case_io = get_case_io(set_name)
+            end_time = time.clock()
+            print('Running time: %s Seconds'%(end_time-start_time))
             message = Message(self.topic)
             message.set_keys(set_name)
-            message.set_tags('')
+            message.set_tags(self.topic)
             message.set_body(case_io)
             try:
                 res = self.producer.send_sync(message)
