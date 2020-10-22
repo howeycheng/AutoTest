@@ -6,6 +6,8 @@ from rocketmq.client import Producer, Message
 from backend.models import CaseSetIoOutparam, CaseSetIo, CasesComponents
 
 import time
+
+
 def get_case_io(set_name):
     """
     获取指定用例入参
@@ -23,7 +25,8 @@ def get_case_io(set_name):
     #     获取入参
     b = CaseSetIo.objects.filter(case_id=set_name).order_by('sequence').values('name', 'value', 'description')
     dic = OrderedDict()
-    c = CasesComponents.objects.filter(case_id=set_name).order_by('order_id').values('component_name', 'component_clazz')
+    c = CasesComponents.objects.filter(case_id=set_name).order_by('order_id').values('component_name',
+                                                                                     'component_clazz')
     for i in c:
         # print(i)
         dic_comp_models[i['component_name']] = i['component_clazz']
@@ -31,7 +34,7 @@ def get_case_io(set_name):
         # print(j)
         dict_temp = {}
         name = j['name']
-        dict_temp['component_script_model'] = ['0',dic_comp_models[name]]
+        dict_temp['component_script_model'] = ['0', dic_comp_models[name]]
         description = j['description']
         value = j['value']
         for index in range(len(description.split("\0"))):
@@ -52,10 +55,14 @@ def get_case_io(set_name):
 
 
 class MyProducer:
+    producer_num = 0
+
     def __init__(self, namesrv_addr, topic):
+        # 通过计数器解决producer重复创建的问题
+        MyProducer.producer_num = MyProducer.producer_num + 1
         self.namesrv_addr = namesrv_addr
         self.topic = topic
-        self.producer = Producer(self.topic)
+        self.producer = Producer(self.topic + '_' + str(MyProducer.producer_num))
 
     def start(self):
         self.producer.set_name_server_address(self.namesrv_addr)
@@ -67,7 +74,7 @@ class MyProducer:
             start_time = time.clock()
             case_io = get_case_io(set_name)
             end_time = time.clock()
-            print('Running time: %s Seconds'%(end_time-start_time))
+            print('Running time: %s Seconds' % (end_time - start_time))
             message = Message(self.topic)
             message.set_keys(set_name)
             message.set_tags(self.topic)

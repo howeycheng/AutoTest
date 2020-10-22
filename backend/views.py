@@ -314,13 +314,14 @@ def get_cases_to_run(request):
                 cases.append(case_id)
     tier_all = list(set(tier_all))
     print(tier_all)
-    with connection.cursor() as cursor:
-        cursor.execute(
-            "select cases_in_set.case_id from cases_in_set join cases on cases_in_set.case_id =  cases.case_id where set_id = %s and cases.tier in %s",
-            [set_id, tier_all])
-        row = cursor.fetchall()
-    for r in row:
-        cases.append(r[0])
+    if len(tier_all) is not 0:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "select cases_in_set.case_id from cases_in_set join cases on cases_in_set.case_id =  cases.case_id where set_id = %s and cases.tier in %s",
+                [set_id, tier_all])
+            row = cursor.fetchall()
+            for r in row:
+                cases.append(r[0])
     # for r in req_all:
     #     case_id_temp = Cases.objects.filter(parent_id=r).values('case_id').order_by('id')
     #     for case in case_id_temp:
