@@ -4,7 +4,6 @@ from django.db import connection
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .log.log import Log
 from .models import *
 
 from .rocketmq.producer import MyProducer
@@ -12,14 +11,13 @@ from .rocketmq.push_consumer import *
 
 from multiprocessing import Process
 import os
+
 # 新建子进程用于获取mq接收的日志
 print("当前进程PID ", os.getpid(), "对应父进程PID", os.getppid())
 p = Process(target=start_consume_message)
 p.start()
 
-
-
-SET_TEMP = []
+set_temp = []
 
 
 @api_view(['GET', 'POST'])
@@ -212,12 +210,12 @@ def get_req_of_case(request):
     :param request:
     :return:
     """
-    global SET_TEMP
+    global set_temp
     level = request.GET.get('level')  # 级别
     set_id = request.GET.get('set')
     tier = request.GET.get('tier')
     if level == "0":
-        SET_TEMP = []
+        set_temp = []
         with connection.cursor() as cursor:
             cursor.execute(
                 "select distinct cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s",
@@ -231,14 +229,14 @@ def get_req_of_case(request):
             i = 0
             length = len(r[0])
             while i + 3 < length:
-                if r[0][0:i + 3] not in SET_TEMP:
-                    SET_TEMP.append(r[0][0:i + 3])
+                if r[0][0:i + 3] not in set_temp:
+                    set_temp.append(r[0][0:i + 3])
                 i = i + 3
         req = Cases.objects.filter(tier__in=row_list).values("id", "name", "case_id", "tier")
         return Response(req)
     else:
         set_row = []
-        for s in SET_TEMP:
+        for s in set_temp:
             if s[:-3] == tier:
                 set_row.append(s)
         req = Cases.objects.filter(tier__in=set_row).values("id", "name", "case_id", "tier")
@@ -268,16 +266,17 @@ def run(request):
     return Response(ret)
 
 
-def get_req_leaf_in_set(test_set, set_id, all_req):
-    req = SetReq.objects.filter(set_id=test_set, parent_id=set_id).values('id', 'parent_id', 'name', 'tier').order_by('id')
-    if len(req) == 0:
-        set_id = SetReq.objects.filter(set_id=test_set, id=set_id).values('id').order_by('id')
-        for i in set_id:
-            if i['id'] not in all_req:
-                all_req.append(i['id'])
-    else:
-        for child in req:
-            get_req_leaf_in_set(test_set, child['id'], all_req)
+# def get_req_leaf_in_set(test_set, set_id, all_req):
+#     req = SetReq.objects.filter(set_id=test_set, parent_id=set_id).values('id', 'parent_id', 'name', 'tier').order_by(
+#         'id')
+#     if len(req) == 0:
+#         set_id = SetReq.objects.filter(set_id=test_set, id=set_id).values('id').order_by('id')
+#         for i in set_id:
+#             if i['id'] not in all_req:
+#                 all_req.append(i['id'])
+#     else:
+#         for child in req:
+#             get_req_leaf_in_set(test_set, child['id'], all_req)
 
 
 @api_view(['GET', 'POST'])
@@ -287,25 +286,50 @@ def get_cases_to_run(request):
     # 测试集id
     set_id = request.GET.get('set')
     cases = []
-    req_all = []
+    # cases2 = []
+    # req_all = []
+    tier_all = []
     # 遍历id,若已是用例id,直接将其加入cases列表,若是场景id,则循环递归出该场景下所有用例id并加入cases列表
     for node in checked_cases:
-        case_id = Cases.objects.filter(id=node).values('case_id')[0]['case_id']
-        if case_id is None:
-            req = []
-            get_req_leaf_in_set(set_id, node, req)
-            for r in req:
-                if r not in req_all:
-                    req_all.append(r)
+        node_list = node.split(' ')
+        # id = node_list[0]
+        case_id = node_list[1]
+        tier = node_list[2]
+        # case_id = Cases.objects.filter(id=node).values('case_id')[0]['case_id']
+        if case_id == 'null':
+        #     req = []
+        #     get_req_leaf_in_set(set_id, id, req)
+        #     for r in req:
+        #         if r not in req_all:
+        #             req_all.append(r)
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "select concat(tier,'000') from set_req where set_id = %s and left(tier,%s) = %s",
+                    [set_id, len(tier), tier])
+                row = cursor.fetchall()
+            for r in row:
+                tier_all.append(r[0])
         else:
             if case_id not in cases:
                 cases.append(case_id)
-    for r in req_all:
-        case_id_temp = Cases.objects.filter(parent_id=r).values('case_id').order_by('id')
-        for case in case_id_temp:
-            case_id = CasesInSet.objects.filter(case_id=case['case_id'], set_id=set_id).values('case_id')
-            if case['case_id'] not in cases and len(case_id) is not 0:
-                cases.append(case['case_id'])
+    tier_all = list(set(tier_all))
+    print(tier_all)
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "select cases_in_set.case_id from cases_in_set join cases on cases_in_set.case_id =  cases.case_id where set_id = %s and cases.tier in %s",
+            [set_id, tier_all])
+        row = cursor.fetchall()
+    for r in row:
+        cases.append(r[0])
+    # for r in req_all:
+    #     case_id_temp = Cases.objects.filter(parent_id=r).values('case_id').order_by('id')
+    #     for case in case_id_temp:
+    #         case_id = CasesInSet.objects.filter(case_id=case['case_id'], set_id=set_id).values('case_id')
+    #         if case['case_id'] not in cases and len(case_id) is not 0:
+    #             cases.append(case['case_id'])
+    #
+    # print(cases)
+    print(cases)
     return Response(cases)
 
 

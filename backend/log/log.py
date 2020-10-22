@@ -10,7 +10,8 @@ from backend.models import *
 
 class Log:
 
-    def init_log_data(self, log, case_id, run_id):
+    @staticmethod
+    def init_log_data(log, case_id, run_id):
         json_log = json.loads(log)
         # comp为组件
         order_id = 0
