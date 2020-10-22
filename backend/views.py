@@ -297,11 +297,11 @@ def get_cases_to_run(request):
         tier = node_list[2]
         # case_id = Cases.objects.filter(id=node).values('case_id')[0]['case_id']
         if case_id == 'null':
-        #     req = []
-        #     get_req_leaf_in_set(set_id, id, req)
-        #     for r in req:
-        #         if r not in req_all:
-        #             req_all.append(r)
+            #     req = []
+            #     get_req_leaf_in_set(set_id, id, req)
+            #     for r in req:
+            #         if r not in req_all:
+            #             req_all.append(r)
             with connection.cursor() as cursor:
                 cursor.execute(
                     "select concat(tier,'000') from set_req where set_id = %s and left(tier,%s) = %s",
@@ -346,5 +346,14 @@ def get_run(request):
 def get_run_set(request):
     run_id = request.GET.get('run_id')
     run_set = RunSet.objects.filter(run_id=run_id, case_type='0').values('case_clazz', 'case_id',
-                                                                         'case_state').order_by('order_id')
+                                                                         'case_state', 'run_id').order_by('order_id')
+    return Response(run_set)
+
+
+# 获取指定执行记录指定用例的组件执行情况
+@api_view(['GET', 'POST'])
+def get_run_set_one(request):
+    run_id = request.GET.get('run_id')
+    case_id = request.GET.get('case_id')
+    run_set = RunSetIo.objects.filter(run_id=run_id, case_id=case_id).values('component_name','value','description','status').order_by('order_id')
     return Response(run_set)
