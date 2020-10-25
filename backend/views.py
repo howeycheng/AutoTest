@@ -12,12 +12,32 @@ from .rocketmq.push_consumer import *
 from multiprocessing import Process
 import os
 
+from django.conf import settings
+# 认证模块
+from django.contrib import auth
+
+# 对应数据库
+from django.contrib.auth.models import User
+
 # 新建子进程用于获取mq接收的日志
 print("当前进程PID ", os.getpid(), "对应父进程PID", os.getppid())
 p = Process(target=start_consume_message)
 p.start()
 
 set_temp = []
+# 创建用例数据发送客户端
+namesrv_addr = settings.ROCKET_MQ.get('nameSrv')
+print('namesrv_addr:', namesrv_addr)
+group_id = settings.ROCKET_MQ.get('groupId')
+my_producer = MyProducer(namesrv_addr, group_id)
+print(my_producer.start())
+
+
+@api_view(['POST'])
+def create_user(request):
+    username = request.POST.get('name')
+    password = request.POST.get('password')
+    User.objects.create(username=username, password=password)
 
 
 @api_view(['GET', 'POST'])
@@ -256,13 +276,13 @@ def get_req_of_case(request):
 
 @api_view(['GET', 'POST'])
 def run(request):
-    namesrv_addr = request.GET.get('nameSrvAddr')
-    topic = request.GET.get('topic')
+    # 保存执行记录到run表
     set_names = request.GET.get('setNames')
-    my_producer = MyProducer(namesrv_addr, topic)
-    my_producer.start()
-    ret = my_producer.producing(set_names.split(','))
-    my_producer.shutdown()
+    run_name = request.GET.get('runName')
+    set_id = request.GET.get('setId')
+    Log.save_run(run_name, set_id)
+    ret = my_producer.producing(set_names.split(','), 'CASES')
+    print(ret)
     return Response(ret)
 
 
@@ -286,8 +306,6 @@ def get_cases_to_run(request):
     # 测试集id
     set_id = request.GET.get('set')
     cases = []
-    # cases2 = []
-    # req_all = []
     tier_all = []
     # 遍历id,若已是用例id,直接将其加入cases列表,若是场景id,则循环递归出该场景下所有用例id并加入cases列表
     for node in checked_cases:
@@ -295,13 +313,7 @@ def get_cases_to_run(request):
         # id = node_list[0]
         case_id = node_list[1]
         tier = node_list[2]
-        # case_id = Cases.objects.filter(id=node).values('case_id')[0]['case_id']
         if case_id == 'null':
-            #     req = []
-            #     get_req_leaf_in_set(set_id, id, req)
-            #     for r in req:
-            #         if r not in req_all:
-            #             req_all.append(r)
             with connection.cursor() as cursor:
                 cursor.execute(
                     "select concat(tier,'000') from set_req where set_id = %s and left(tier,%s) = %s",
@@ -322,14 +334,6 @@ def get_cases_to_run(request):
             row = cursor.fetchall()
             for r in row:
                 cases.append(r[0])
-    # for r in req_all:
-    #     case_id_temp = Cases.objects.filter(parent_id=r).values('case_id').order_by('id')
-    #     for case in case_id_temp:
-    #         case_id = CasesInSet.objects.filter(case_id=case['case_id'], set_id=set_id).values('case_id')
-    #         if case['case_id'] not in cases and len(case_id) is not 0:
-    #             cases.append(case['case_id'])
-    #
-    # print(cases)
     print(cases)
     return Response(cases)
 
@@ -355,5 +359,6 @@ def get_run_set(request):
 def get_run_set_one(request):
     run_id = request.GET.get('run_id')
     case_id = request.GET.get('case_id')
-    run_set = RunSetIo.objects.filter(run_id=run_id, case_id=case_id).values('component_name','value','description','status').order_by('order_id')
+    run_set = RunSetIo.objects.filter(run_id=run_id, case_id=case_id).values('component_name', 'value', 'description',
+                                                                             'status').order_by('order_id')
     return Response(run_set)

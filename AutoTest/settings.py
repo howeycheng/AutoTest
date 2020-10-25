@@ -82,10 +82,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cases_manager',
         'USER': 'root',
-        'PASSWORD': 'root',
-        # 'HOST': '127.0.0.1',
+        'PASSWORD': 'csc_1o8',
+        'HOST': '127.0.0.1',
         # 'HOST': '122.51.44.31',
-        'HOST': '10.1.160.162',
+        # 'HOST': '10.1.160.162',
         'PORT': '3306'
     }
 }
@@ -111,15 +111,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -164,3 +164,9 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
     'Pragma',
 )
+
+ROCKET_MQ = {
+    'nameSrv': '127.0.0.1:9876',
+    'groupId': 'producer'
+}
+

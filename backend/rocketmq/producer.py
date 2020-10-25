@@ -55,35 +55,35 @@ def get_case_io(set_name):
 
 
 class MyProducer:
-    producer_num = 0
+    # producer_num = 0
 
-    def __init__(self, namesrv_addr, topic):
+    def __init__(self, namesrv_addr, group_id):
         # 通过计数器解决producer重复创建的问题
-        MyProducer.producer_num = MyProducer.producer_num + 1
+        # MyProducer.producer_num = MyProducer.producer_num + 1
         self.namesrv_addr = namesrv_addr
-        self.topic = topic
-        self.producer = Producer(self.topic + '_' + str(MyProducer.producer_num))
+        self.group_id = group_id
+        self.producer = Producer(self.group_id)
 
     def start(self):
         self.producer.set_name_server_address(self.namesrv_addr)
         self.producer.start()
 
-    def producing(self, set_names):
+    def producing(self, set_names,topic):
         r = []
         for set_name in set_names:
             start_time = time.clock()
             case_io = get_case_io(set_name)
             end_time = time.clock()
             print('Running time: %s Seconds' % (end_time - start_time))
-            message = Message(self.topic)
+            message = Message(topic)
             message.set_keys(set_name)
-            message.set_tags(self.topic)
+            message.set_tags(topic)
             message.set_body(case_io)
             try:
                 res = self.producer.send_sync(message)
                 r.append({"status": res.status, "msg_id": res.msg_id, "offset": res.offset})
-            except:
-                return "rocketmq.exceptions.ProducerSendSyncFailed"
+            except Exception as e:
+                return e
         return r
 
     def shutdown(self):

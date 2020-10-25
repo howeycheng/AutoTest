@@ -20,7 +20,7 @@ from rocketmq.client import Producer, Message, TransactionMQProducer, Transactio
 
 import time
 
-topic = 'LOG'
+topic = 'test'
 gid = 'test'
 name_srv = '127.0.0.1:9876'
 

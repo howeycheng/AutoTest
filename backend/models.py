@@ -233,7 +233,7 @@ class CaseSetIoOutparam(models.Model):
 
 
 class Run(models.Model):
-    project_id = models.IntegerField(primary_key=True)
+    project_id = models.IntegerField()
     run_id = models.CharField(max_length=50)
     run_name = models.CharField(max_length=50)
     runner = models.CharField(max_length=50, blank=True, null=True)
