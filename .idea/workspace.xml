@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5dc49ec6-7ad2-416e-8d96-4996b204e909" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/AutoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AutoTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoTest/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoTest/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +23,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -147,14 +153,14 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="AutoTest.settings" />
       </envs>
-      <option name="SDK_HOME" value="sftp://root@10.1.160.162:22/bin/python3" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8090" />
-      <option name="host" value="10.1.160.162" />
+      <option name="host" value="127.0.0.1" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -505,10 +511,11 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="552" y="213" key="#Deployment/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600398421982" />
-    <state x="425" y="141" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600667289718">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="283" y="135" width="805" height="703" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603671821432">
+      <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="989" y="638" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599740289558" />
+    <state x="283" y="135" width="805" height="703" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1280.994@0.30.1280.994" timestamp="1603671821432" />
     <state x="425" y="141" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600667289718" />
     <state x="640" y="289" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600398625032">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -525,41 +532,62 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="740" y="309" key="FileChooserDialogImpl/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600049083784" />
-    <state width="1877" height="466" key="GridCell.Tab.0.bottom" timestamp="1600829321930">
+    <state width="1877" height="323" key="GridCell.Tab.0.bottom" timestamp="1603698219085">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
+    <state width="1877" height="323" key="GridCell.Tab.0.bottom/-1280.87.1280.994/1920.86.1024.1250/0.30.1920.1050@0.30.1920.1050" timestamp="1603698219085" />
     <state width="1640" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1237" height="420" key="GridCell.Tab.0.bottom/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
+    <state width="1237" height="665" key="GridCell.Tab.0.bottom/0.30.1280.994@0.30.1280.994" timestamp="1603673401210" />
     <state width="1877" height="466" key="GridCell.Tab.0.bottom/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600829321930" />
     <state width="2517" height="784" key="GridCell.Tab.0.bottom/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
-    <state width="1877" height="466" key="GridCell.Tab.0.center" timestamp="1600829321929">
+    <state width="1877" height="323" key="GridCell.Tab.0.center" timestamp="1603698219085">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
+    <state width="1877" height="323" key="GridCell.Tab.0.center/-1280.87.1280.994/1920.86.1024.1250/0.30.1920.1050@0.30.1920.1050" timestamp="1603698219085" />
     <state width="1640" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1237" height="420" key="GridCell.Tab.0.center/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
+    <state width="1237" height="665" key="GridCell.Tab.0.center/0.30.1280.994@0.30.1280.994" timestamp="1603673401210" />
     <state width="1877" height="466" key="GridCell.Tab.0.center/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600829321929" />
     <state width="2517" height="784" key="GridCell.Tab.0.center/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
-    <state width="1877" height="466" key="GridCell.Tab.0.left" timestamp="1600829321929">
+    <state width="1877" height="323" key="GridCell.Tab.0.left" timestamp="1603698219085">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
+    <state width="1877" height="323" key="GridCell.Tab.0.left/-1280.87.1280.994/1920.86.1024.1250/0.30.1920.1050@0.30.1920.1050" timestamp="1603698219085" />
     <state width="1640" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1237" height="420" key="GridCell.Tab.0.left/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
+    <state width="1237" height="665" key="GridCell.Tab.0.left/0.30.1280.994@0.30.1280.994" timestamp="1603673401209" />
     <state width="1877" height="466" key="GridCell.Tab.0.left/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600829321929" />
     <state width="2517" height="784" key="GridCell.Tab.0.left/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137582" />
-    <state width="1877" height="466" key="GridCell.Tab.0.right" timestamp="1600829321929">
+    <state width="1877" height="323" key="GridCell.Tab.0.right" timestamp="1603698219085">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
+    <state width="1877" height="323" key="GridCell.Tab.0.right/-1280.87.1280.994/1920.86.1024.1250/0.30.1920.1050@0.30.1920.1050" timestamp="1603698219085" />
     <state width="1640" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1599743281618" />
-    <state width="1237" height="420" key="GridCell.Tab.0.right/0.30.1280.994@0.30.1280.994" timestamp="1600164071853" />
+    <state width="1237" height="665" key="GridCell.Tab.0.right/0.30.1280.994@0.30.1280.994" timestamp="1603673401210" />
     <state width="1877" height="466" key="GridCell.Tab.0.right/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1600829321929" />
     <state width="2517" height="784" key="GridCell.Tab.0.right/0.30.2560.1410@0.30.2560.1410" timestamp="1600614137583" />
+    <state width="1877" height="451" key="GridCell.Tab.1.bottom" timestamp="1603691170489">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="451" key="GridCell.Tab.1.bottom/-1280.87.1280.994/1920.86.1024.1250/0.30.1920.1050@0.30.1920.1050" timestamp="1603691170489" />
+    <state width="1877" height="451" key="GridCell.Tab.1.center" timestamp="1603691170488">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="451" key="GridCell.Tab.1.center/-1280.87.1280.994/1920.86.1024.1250/0.30.1920.1050@0.30.1920.1050" timestamp="1603691170488" />
+    <state width="1877" height="451" key="GridCell.Tab.1.left" timestamp="1603691170488">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="451" key="GridCell.Tab.1.left/-1280.87.1280.994/1920.86.1024.1250/0.30.1920.1050@0.30.1920.1050" timestamp="1603691170488" />
+    <state width="1877" height="451" key="GridCell.Tab.1.right" timestamp="1603691170488">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="451" key="GridCell.Tab.1.right/-1280.87.1280.994/1920.86.1024.1250/0.30.1920.1050@0.30.1920.1050" timestamp="1603691170488" />
     <state x="1011" y="655" key="MultipleFileMergeDialog" timestamp="1599740218016">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1011" y="655" key="MultipleFileMergeDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599740218016" />
-    <state x="252" y="290" width="998" height="716" key="SettingsEditor" timestamp="1599790214108">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="116" y="180" width="916" height="708" key="SettingsEditor" timestamp="1603671836653">
+      <screen x="0" y="30" width="1280" height="994" />
     </state>
+    <state x="116" y="180" width="916" height="708" key="SettingsEditor/0.30.1280.994@0.30.1280.994" timestamp="1603671836653" />
     <state x="252" y="290" width="998" height="716" key="SettingsEditor/0.30.1920.1050/1920.30.1024.1250@0.30.1920.1050" timestamp="1599790214108" />
     <state x="902" y="534" key="Vcs.Push.Dialog.v2" timestamp="1600781199073">
       <screen x="0" y="30" width="2560" height="1410" />
@@ -573,10 +601,21 @@
     </state>
     <state x="918" y="584" key="git4idea.ui.GitStashDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1599740194263" />
   </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Python.DjangoServer">
+        <watch expression="userinfo.model" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/AutoTest$pullconsumer.coverage" NAME="pullconsumer Coverage Results" MODIFIED="1585834705915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
+    <SUITE FILE_PATH="coverage/AutoTest$rocketmq_tests.coverage" NAME="rocketmq_tests Coverage Results" MODIFIED="1602656475920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/AutoTest$get_case.coverage" NAME="get_case Coverage Results" MODIFIED="1589122648259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
+    <SUITE FILE_PATH="coverage/AutoTest$rocketmq_customer_tests.coverage" NAME="rocketmq_customer_tests Coverage Results" MODIFIED="1602656646787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/AutoTest$settings.coverage" NAME="settings Coverage Results" MODIFIED="1602658180236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AutoTest" />
     <SUITE FILE_PATH="coverage/AutoTest$producer.coverage" NAME="producer Coverage Results" MODIFIED="1589112532601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
+    <SUITE FILE_PATH="coverage/AutoTest$test.coverage" NAME="test Coverage Results" MODIFIED="1602655484616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/AutoTest$push_consumer.coverage" NAME="push_consumer Coverage Results" MODIFIED="1586006658621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/rocketmq" />
   </component>
 </project>

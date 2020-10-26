@@ -35,9 +35,40 @@ print(my_producer.start())
 
 @api_view(['POST'])
 def create_user(request):
+    """
+    创建用户
+    :param request:
+    :return:
+    """
     username = request.POST.get('name')
     password = request.POST.get('password')
-    User.objects.create(username=username, password=password)
+    userinfo = User.objects.filter(username=username)
+    if userinfo.exists():
+        return Response('用户名已存在')
+    else:
+        User.objects.create_user(username=username, password=password)
+        return Response('创建成功')
+
+
+@api_view(['POST'])
+def login(request):
+    username = request.POST.get("name")
+    password = request.POST.get("password")
+    userinfo = User.objects.filter(username=username)
+    if userinfo.exists():
+        if auth.authenticate(username=username, password=password):
+            request.session['is_login'] = True
+            request.session['user'] = username
+            return Response('登录成功')
+        else:
+            return Response('验证失败')
+    else:
+        return Response('用户名不存在')
+
+
+@api_view(['POST'])
+def login_out(request):
+    pass
 
 
 @api_view(['GET', 'POST'])
@@ -47,6 +78,10 @@ def get_req(request):
     :param request:
     :return:
     """
+    s = request.session.keys()
+    b = request.COOKIES.keys()
+    print(s)
+    print(b)
     cases = None
     rqid = request.GET.get('rqid')  # 需求id
     if rqid is None:  # 查询需求根节点

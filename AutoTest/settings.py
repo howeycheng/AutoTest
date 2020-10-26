@@ -82,10 +82,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cases_manager',
         'USER': 'root',
-        'PASSWORD': 'csc_1o8',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'root',
+        # 'HOST': '127.0.0.1',
         # 'HOST': '122.51.44.31',
-        # 'HOST': '10.1.160.162',
+        'HOST': '10.1.160.162',
         'PORT': '3306'
     }
 }
@@ -135,7 +135,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, FRONTEND_ROOT),
     os.path.join(BASE_DIR, FRONTEND_ROOT + '/static/'),
 )
-
+# 允许携带cookie
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_WHITELIST = (
@@ -151,6 +151,7 @@ CORS_ALLOW_METHODS = (
     'VIEW',
 )
 
+# 跨域允许的请求头
 CORS_ALLOW_HEADERS = (
     'XMLHttpRequest',
     'X_FILENAME',
@@ -166,7 +167,6 @@ CORS_ALLOW_HEADERS = (
 )
 
 ROCKET_MQ = {
-    'nameSrv': '127.0.0.1:9876',
+    'nameSrv': '10.1.160.162:9876',
     'groupId': 'producer'
 }
-

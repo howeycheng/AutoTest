@@ -29,5 +29,7 @@ urlpatterns = [
     path('runLog/set/', views.get_run_set, name='runLogSet'),
     path('runLog/set/one', views.get_run_set_one, name='runLogSetOne'),
     path('register/', views.create_user, name='createUser'),
+    path('login/', views.login, name='login'),
+    path('loginOut/', views.login_out, name='login'),
     # path('getCaseIo/', views.get_case_io, name='getCaseIo'),
 ]
