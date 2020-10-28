@@ -1,0 +1,4 @@
+由于开发阶段，前台访问后台API存在跨域问题，而新版google对cookies新增的samesite属性会导致无法跨域传递cookies,所以开发调试阶段，通过禁用浏览器上的samesite方式暂时解决该问题，待上线后，可使用nginx映射解决该问题
+浏览器禁用方法
+chrome://flags/#site-isolation-trial-opt-out，搜索samesite
+重启浏览器

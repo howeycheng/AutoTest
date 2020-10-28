@@ -1,6 +1,7 @@
 # Create your views here.
-
+from django.contrib.auth import logout
 from django.db import connection
+from dynamic_db_router import in_database
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -59,6 +60,7 @@ def login(request):
         if auth.authenticate(username=username, password=password):
             request.session['is_login'] = True
             request.session['user'] = username
+            request.session['project'] = 0
             return Response('登录成功')
         else:
             return Response('验证失败')
@@ -66,9 +68,13 @@ def login(request):
         return Response('用户名不存在')
 
 
+# 注销登录
 @api_view(['POST'])
 def login_out(request):
-    pass
+    print(request.session.get('is_login'))
+    print(request.session.get('user'))
+    logout(request)
+    return Response({'status': '0'})
 
 
 @api_view(['GET', 'POST'])
@@ -78,10 +84,9 @@ def get_req(request):
     :param request:
     :return:
     """
-    s = request.session.keys()
-    b = request.COOKIES.keys()
-    print(s)
-    print(b)
+    print(request.session.get('project'))
+    print(request.session.get('user'))
+    print(request.session.get('is_login'))
     cases = None
     rqid = request.GET.get('rqid')  # 需求id
     if rqid is None:  # 查询需求根节点
@@ -397,3 +402,10 @@ def get_run_set_one(request):
     run_set = RunSetIo.objects.filter(run_id=run_id, case_id=case_id).values('component_name', 'value', 'description',
                                                                              'status').order_by('order_id')
     return Response(run_set)
+
+
+@api_view(['GET', 'POST'])
+def test():
+    with in_database('external'):
+        input = Requirement.objects.filter(parent_id=0).values('id', 'name', 'parent_id')
+        return Response(input)

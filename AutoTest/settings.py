@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend.apps.CasesConfig',
     'mptt',
-    # 'rest_framework_swagger',
     'rest_framework',
 ]
 
@@ -76,6 +75,7 @@ WSGI_APPLICATION = 'AutoTest.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+PROJECT_NAME = ''
 
 DATABASES = {
     'default': {
@@ -87,7 +87,15 @@ DATABASES = {
         # 'HOST': '122.51.44.31',
         'HOST': '10.1.160.162',
         'PORT': '3306'
-    }
+    },
+    'external': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': PROJECT_NAME,
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '10.1.160.162',
+        'PORT': '3306',
+    },
 }
 
 # Password validation
@@ -135,12 +143,24 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, FRONTEND_ROOT),
     os.path.join(BASE_DIR, FRONTEND_ROOT + '/static/'),
 )
+
+# 跨域设置
 # 允许携带cookie
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = (
-#     '*'
-# )
+# 只允许指定域访问
+CORS_ORIGIN_ALLOW_ALL = False
+# 针对跨域的http请求进行配置，localhost无法进行session传递
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+)
+SESSION_COOKIE_PATH = "/"  # 作用路径，/代表所有路径下均起作用
+# 由于开发阶段，前台访问后台API存在跨域问题，而新版google对cookies新增的samesite属性会导致无法跨域传递cookies,所以开发调试阶段，通过禁用浏览器上的samesite方式暂时解决该问题，待上线后，可使用nginx映射解决该问题
+# 浏览器禁用方法
+# chrome://flags/#site-isolation-trial-opt-out，搜索samesite
+# 重启浏览器
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SAMESITE = 'None'
+
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
@@ -165,6 +185,7 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
     'Pragma',
 )
+# rocketmq设置
 
 ROCKET_MQ = {
     'nameSrv': '10.1.160.162:9876',
