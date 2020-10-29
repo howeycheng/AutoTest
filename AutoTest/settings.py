@@ -80,24 +80,16 @@ PROJECT_NAME = ''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cases_manager',
+        'NAME': 'manager',
         'USER': 'root',
         'PASSWORD': 'root',
         # 'HOST': '127.0.0.1',
         # 'HOST': '122.51.44.31',
         'HOST': '10.1.160.162',
         'PORT': '3306'
-    },
-    'external': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': PROJECT_NAME,
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '10.1.160.162',
-        'PORT': '3306',
-    },
+    }
 }
-
+DATABASE_ROUTERS = ['dynamic_db_router.DynamicDbRouter']
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -161,6 +153,12 @@ SESSION_COOKIE_PATH = "/"  # 作用路径，/代表所有路径下均起作用
 SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_SAMESITE = 'None'
 
+# 针对CSR配置
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = False
+
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
@@ -185,8 +183,8 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
     'Pragma',
 )
-# rocketmq设置
 
+# rocketmq设置
 ROCKET_MQ = {
     'nameSrv': '10.1.160.162:9876',
     'groupId': 'producer'

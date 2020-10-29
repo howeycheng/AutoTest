@@ -1,5 +1,5 @@
 # Create your views here.
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login, authenticate
 from django.db import connection
 from dynamic_db_router import in_database
 from rest_framework.decorators import api_view
@@ -15,7 +15,6 @@ import os
 
 from django.conf import settings
 # 认证模块
-from django.contrib import auth
 
 # 对应数据库
 from django.contrib.auth.models import User
@@ -41,7 +40,7 @@ def create_user(request):
     :param request:
     :return:
     """
-    username = request.POST.get('name')
+    username = request.POST.get('username')
     password = request.POST.get('password')
     userinfo = User.objects.filter(username=username)
     if userinfo.exists():
@@ -52,14 +51,14 @@ def create_user(request):
 
 
 @api_view(['POST'])
-def login(request):
-    username = request.POST.get("name")
-    password = request.POST.get("password")
-    userinfo = User.objects.filter(username=username)
-    if userinfo.exists():
-        if auth.authenticate(username=username, password=password):
-            request.session['is_login'] = True
-            request.session['user'] = username
+def my_login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = User.objects.filter(username=username)
+    if user.exists():
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
             request.session['project'] = 0
             return Response('登录成功')
         else:
@@ -404,8 +403,18 @@ def get_run_set_one(request):
     return Response(run_set)
 
 
+external_db = {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'cases_manager',
+    'USER': 'root',
+    'PASSWORD': 'root',
+    'HOST': '10.1.160.162',
+    'PORT': '3306',
+}
+
+
 @api_view(['GET', 'POST'])
-def test():
-    with in_database('external'):
+def test(request):
+    with in_database(external_db):
         input = Requirement.objects.filter(parent_id=0).values('id', 'name', 'parent_id')
         return Response(input)
