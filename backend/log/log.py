@@ -24,9 +24,14 @@ class Log:
         run = Run(project_id=project_id, run_id=run_id_new, run_name=run_name, runner=runner, set_id=set_id, start=start,
                   finish=finish, status=status)
         run.save()
+        return run_id_new
 
     @staticmethod
     def init_log_data(log, case_id, run_id):
+        case_name = Cases.objects.filter(case_id=case_id).values('name')[0]['name']
+        run_set = RunSet(project_id='0', case_name=case_name, case_clazz=case_name, case_type=0, case_id=case_id, order_id=1,
+                         case_state=2, set_id='', run_id=run_id, flag=1)
+        run_set.save()
         json_log = json.loads(log)
         # comp为组件
         order_id = 0

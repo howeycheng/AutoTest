@@ -68,7 +68,7 @@ class MyProducer:
         self.producer.set_name_server_address(self.namesrv_addr)
         self.producer.start()
 
-    def producing(self, set_names,topic):
+    def producing(self, set_names,topic,run_id_new):
         r = []
         for set_name in set_names:
             start_time = time.clock()
@@ -77,7 +77,7 @@ class MyProducer:
             print('Running time: %s Seconds' % (end_time - start_time))
             message = Message(topic)
             message.set_keys(set_name)
-            message.set_tags(topic)
+            message.set_tags(run_id_new)
             message.set_body(case_io)
             try:
                 res = self.producer.send_sync(message)

@@ -1,5 +1,4 @@
 # Create your views here.
-from django.contrib.auth import logout, login, authenticate
 from django.db import connection
 from dynamic_db_router import in_database
 from rest_framework.decorators import api_view
@@ -14,10 +13,6 @@ from multiprocessing import Process
 import os
 
 from django.conf import settings
-# 认证模块
-
-# 对应数据库
-from django.contrib.auth.models import User
 
 # 新建子进程用于获取mq接收的日志
 print("当前进程PID ", os.getpid(), "对应父进程PID", os.getppid())
@@ -30,50 +25,7 @@ namesrv_addr = settings.ROCKET_MQ.get('nameSrv')
 print('namesrv_addr:', namesrv_addr)
 group_id = settings.ROCKET_MQ.get('groupId')
 my_producer = MyProducer(namesrv_addr, group_id)
-print(my_producer.start())
-
-
-@api_view(['POST'])
-def create_user(request):
-    """
-    创建用户
-    :param request:
-    :return:
-    """
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    userinfo = User.objects.filter(username=username)
-    if userinfo.exists():
-        return Response('用户名已存在')
-    else:
-        User.objects.create_user(username=username, password=password)
-        return Response('创建成功')
-
-
-@api_view(['POST'])
-def my_login(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = User.objects.filter(username=username)
-    if user.exists():
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            request.session['project'] = 0
-            return Response('登录成功')
-        else:
-            return Response('验证失败')
-    else:
-        return Response('用户名不存在')
-
-
-# 注销登录
-@api_view(['POST'])
-def login_out(request):
-    print(request.session.get('is_login'))
-    print(request.session.get('user'))
-    logout(request)
-    return Response({'status': '0'})
+my_producer.start()
 
 
 @api_view(['GET', 'POST'])
@@ -319,8 +271,9 @@ def run(request):
     set_names = request.GET.get('setNames')
     run_name = request.GET.get('runName')
     set_id = request.GET.get('setId')
-    Log.save_run(run_name, set_id)
-    ret = my_producer.producing(set_names.split(','), 'CASES')
+    # 保存一条执行记录到run表，并返回该记录的run_id
+    run_id_new = Log.save_run(run_name, set_id)
+    ret = my_producer.producing(set_names.split(','), 'CASES',run_id_new)
     print(ret)
     return Response(ret)
 

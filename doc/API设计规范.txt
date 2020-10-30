@@ -1,0 +1,81 @@
+API设计
+
+　　 对于后端的API接口设计，应该遵循RESTful AIP规范。
+
+　　 通信协议上应该采用HTTPS协议，确保数据安全
+
+　　 API的域名应该具有一定的辨识度，如下url示例：
+
+https://api.example.com  # 以api开头
+https://example.org/api/  # 以api结束
+　　 API中应当放入版本号，如下示例：
+
+https://api.example.com/v1/
+https://api.example.com/v2/
+　　 API请求路径中只能含有名词，不应该含有动词。而且所用的名词往往与数据库的表格名对应，支持复数（极其重要），如下示例：
+
+https://api.example.com/v1/book # 代表全部的书籍
+https://api.example.com/v1/get_all_book # 不应该使用动词，这是错误的形式
+　　 由于API不含有动词，所以我们可以根据不同的请求方式对处理逻辑进行划分，如下所示：
+
+GET（SELECT）：从服务器取出资源（一项或多项）。
+POST（CREATE）：在服务器新建一个资源。
+PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
+PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。
+DELETE（DELETE）：从服务器删除资源。
+　　 下面是一些例子：
+
+GET /book：列出所有书籍
+POST /book：新建一本书籍
+GET /book/ID：获取某个指定书籍的信息
+PUT /book/ID：更新某个指定书籍的信息（提供该书籍的全部信息）
+PATCH /book/ID：更新某个指定书籍的信息（提供该书籍的部分信息）
+DELETE /book/ID：删除某本数据
+GET /book/ID/details：列出某本书籍的详细信息
+DELETE /zoos/ID/author/ID：删除某本指定书籍中的指定作者
+　　 如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。
+
+　　 下面是一些常见的参数。
+
+?limit=10：指定返回记录的数量
+?offset=10：指定返回记录的开始位置。
+?page=2&per_page=100：指定第几页，以及每页的记录数。
+?sortby=name&order=asc：指定返回结果按照哪个属性排序，以及排序顺序。
+?animal_type_id=1：指定筛选条件
+　　 服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）。
+
+200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
+201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。
+202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）
+204 NO CONTENT - [DELETE]：用户删除数据成功。
+
+400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。
+401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。
+403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。
+404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。
+406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
+410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。
+422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。
+
+500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。
+　　 对于API的返回内容来说，如果状态码是4xx，则应该在返回信息中添加error及详细的错误描述。
+
+{
+    error: "Invalid API key"
+}
+　　 对于API的返回结果来说，应该针对不同的请求操作，服务器向用户返回的结果需符合以下规范。
+
+GET /collection：返回资源对象的列表（数组）
+GET /collection/resource：返回单个资源对象
+POST /collection：返回新生成的资源对象
+PUT /collection/resource：返回完整的资源对象
+PATCH /collection/resource：返回完整的资源对象
+DELETE /collection/resource：返回一个空文档
+　　 可以在返回的信息中添加链接，让用户知道及时不查看文档，下一步也可以做什么。
+
+{"link": {
+  "rel":   "collection https://www.example.com/zoos",
+  "href":  "https://api.example.com/zoos",
+  "title": "List of zoos",
+  "type":  "application/vnd.yourformat+json"
+}}

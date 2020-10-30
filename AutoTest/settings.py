@@ -80,7 +80,7 @@ PROJECT_NAME = ''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'manager',
+        'NAME': 'cases_manager',
         'USER': 'root',
         'PASSWORD': 'root',
         # 'HOST': '127.0.0.1',
