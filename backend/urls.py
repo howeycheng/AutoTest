@@ -28,6 +28,8 @@ urlpatterns = [
     path('runLog/', views.get_run, name='runLog'),
     path('runLog/set/', views.get_run_set, name='runLogSet'),
     path('runLog/set/one', views.get_run_set_one, name='runLogSetOne'),
+    path('run/id', views.delete_run, name='deleteRun'),
     path('test/', views.test, name='test'),
+    path('run/progress/id', views.get_run_progress, name='test'),
     # path('getCaseIo/', views.get_case_io, name='getCaseIo'),
 ]

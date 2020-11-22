@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend.apps.CasesConfig',
+    'manager.apps.ManagerConfig',
     'mptt',
     'rest_framework',
 ]
@@ -46,10 +47,12 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'manager.disable_csrf_check.DisableCSRFCheck',
+    'backend.project_selector.ProjectSelector'
 ]
 
 ROOT_URLCONF = 'AutoTest.urls'
@@ -80,11 +83,9 @@ PROJECT_NAME = ''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cases_manager',
+        'NAME': 'manager',
         'USER': 'root',
         'PASSWORD': 'root',
-        # 'HOST': '127.0.0.1',
-        # 'HOST': '122.51.44.31',
         'HOST': '10.1.160.162',
         'PORT': '3306'
     }
@@ -183,9 +184,9 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
     'Pragma',
 )
-
 # rocketmq设置
 ROCKET_MQ = {
     'nameSrv': '10.1.160.162:9876',
-    'groupId': 'producer'
+    'logConsumerName': 'logReceive',
+    'casesProducerName': 'casesSend',
 }

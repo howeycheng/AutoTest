@@ -1,31 +1,42 @@
 # Create your views here.
+import logging
+
 from django.db import connection
-from dynamic_db_router import in_database
+from dynamic_db_router import DynamicDbRouter, in_database
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import *
+from .mylog.log_save import save_run_recode
 
-from .rocketmq.producer import MyProducer
-from .rocketmq.push_consumer import *
-
-from multiprocessing import Process
 import os
 
 from django.conf import settings
 
 # 新建子进程用于获取mq接收的日志
+from .mysend.my_producer import MyProducer
+
+# logger = logging.getLogger('django')
+
 print("当前进程PID ", os.getpid(), "对应父进程PID", os.getppid())
-p = Process(target=start_consume_message)
-p.start()
+# p = Process(target=start_consume_log)
+# p.start()
 
 set_temp = []
 # 创建用例数据发送客户端
 namesrv_addr = settings.ROCKET_MQ.get('nameSrv')
-print('namesrv_addr:', namesrv_addr)
-group_id = settings.ROCKET_MQ.get('groupId')
+group_id = settings.ROCKET_MQ.get('casesProducerName')
 my_producer = MyProducer(namesrv_addr, group_id)
 my_producer.start()
+
+external_db = {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'cases_manager',
+    'USER': 'root',
+    'PASSWORD': 'root',
+    'HOST': '10.1.160.162',
+    'PORT': '3306'
+}
 
 
 @api_view(['GET', 'POST'])
@@ -35,16 +46,18 @@ def get_req(request):
     :param request:
     :return:
     """
-    print(request.session.get('project'))
-    print(request.session.get('user'))
-    print(request.session.get('is_login'))
-    cases = None
-    rqid = request.GET.get('rqid')  # 需求id
-    if rqid is None:  # 查询需求根节点
-        cases = Requirement.objects.filter(parent_id=0).values('id', 'name', 'parent_id')
-    elif rqid is not None:  # 查询点击节点子需求
-        cases = Requirement.objects.filter(parent_id=rqid).values('id', 'name', 'parent_id')
-    return Response(cases)
+    print('_external_db', getattr(request, '_external_db', ''))
+    with in_database(getattr(request, '_external_db', '')):
+        cases = None
+        rqid = request.GET.get('rqid')  # 需求id
+        if rqid is None:  # 查询需求根节点
+            cases = Requirement.objects.filter(parent_id=0).values('id', 'name', 'parent_id')
+        elif rqid is not None:  # 查询点击节点子需求
+            cases = Requirement.objects.filter(parent_id=rqid).values('id', 'name', 'parent_id')
+        if cases:
+            return Response(cases)
+        else:
+            return Response("")
 
 
 @api_view(['GET', 'POST'])
@@ -56,7 +69,8 @@ def get_scene(request):
     """
     rqid = request.GET.get('rqid')  # 需求ID
     scene = ReqScene.objects.filter(req_id=rqid).values('id', 'scene_name')
-    return Response(scene)
+    if scene:
+        return Response(scene)
 
 
 @api_view(['GET', 'POST'])
@@ -251,7 +265,7 @@ def get_req_of_case(request):
             if s[:-3] == tier:
                 set_row.append(s)
         req = Cases.objects.filter(tier__in=set_row).values("id", "name", "case_id", "tier")
-        if len(req) == 0 and tier[-3:] is not "000":
+        if len(req) == 0 and tier[-3:] != "000":
             tier = tier + "000"
             with connection.cursor() as cursor:
                 cursor.execute(
@@ -268,27 +282,14 @@ def get_req_of_case(request):
 @api_view(['GET', 'POST'])
 def run(request):
     # 保存执行记录到run表
-    set_names = request.GET.get('setNames')
-    run_name = request.GET.get('runName')
-    set_id = request.GET.get('setId')
+    set_names = request.POST.get('setNames').split(',')
+    run_name = request.POST.get('runName')
+    set_id = request.POST.get('setId')
     # 保存一条执行记录到run表，并返回该记录的run_id
-    run_id_new = Log.save_run(run_name, set_id)
-    ret = my_producer.producing(set_names.split(','), 'CASES',run_id_new)
-    print(ret)
-    return Response(ret)
-
-
-# def get_req_leaf_in_set(test_set, set_id, all_req):
-#     req = SetReq.objects.filter(set_id=test_set, parent_id=set_id).values('id', 'parent_id', 'name', 'tier').order_by(
-#         'id')
-#     if len(req) == 0:
-#         set_id = SetReq.objects.filter(set_id=test_set, id=set_id).values('id').order_by('id')
-#         for i in set_id:
-#             if i['id'] not in all_req:
-#                 all_req.append(i['id'])
-#     else:
-#         for child in req:
-#             get_req_leaf_in_set(test_set, child['id'], all_req)
+    run_id_new = save_run_recode(run_name, set_id, len(set_names))
+    ret = my_producer.producing(set_names, 'CASES', run_id_new)
+    print(str(ret))
+    return Response(str(ret))
 
 
 @api_view(['GET', 'POST'])
@@ -314,11 +315,10 @@ def get_cases_to_run(request):
             for r in row:
                 tier_all.append(r[0])
         else:
-            if case_id not in cases:
-                cases.append(case_id)
+            cases.append(case_id)
     tier_all = list(set(tier_all))
     print(tier_all)
-    if len(tier_all) is not 0:
+    if len(tier_all) != 0:
         with connection.cursor() as cursor:
             cursor.execute(
                 "select cases_in_set.case_id from cases_in_set join cases on cases_in_set.case_id =  cases.case_id where set_id = %s and cases.tier in %s",
@@ -326,6 +326,7 @@ def get_cases_to_run(request):
             row = cursor.fetchall()
             for r in row:
                 cases.append(r[0])
+    cases = list(set(cases))
     print(cases)
     return Response(cases)
 
@@ -333,7 +334,7 @@ def get_cases_to_run(request):
 # 获取所有执行记录
 @api_view(['GET', 'POST'])
 def get_run(request):
-    run_log = Run.objects.values('run_name', 'start', 'finish', 'run_id')
+    run_log = Run.objects.values('run_name', 'start', 'finish', 'run_id', 'runner_result', 'finish_nums', 'nums')
     return Response(run_log)
 
 
@@ -342,7 +343,9 @@ def get_run(request):
 def get_run_set(request):
     run_id = request.GET.get('run_id')
     run_set = RunSet.objects.filter(run_id=run_id, case_type='0').values('case_clazz', 'case_id',
-                                                                         'case_state', 'run_id').order_by('order_id')
+                                                                         'case_state', 'run_id',
+                                                                         'runner_result').order_by(
+        'order_id')
     return Response(run_set)
 
 
@@ -352,22 +355,30 @@ def get_run_set_one(request):
     run_id = request.GET.get('run_id')
     case_id = request.GET.get('case_id')
     run_set = RunSetIo.objects.filter(run_id=run_id, case_id=case_id).values('component_name', 'value', 'description',
-                                                                             'status').order_by('order_id')
+                                                                             'runner_result').order_by('order_id')
     return Response(run_set)
-
-
-external_db = {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'cases_manager',
-    'USER': 'root',
-    'PASSWORD': 'root',
-    'HOST': '10.1.160.162',
-    'PORT': '3306',
-}
 
 
 @api_view(['GET', 'POST'])
 def test(request):
-    with in_database(external_db):
-        input = Requirement.objects.filter(parent_id=0).values('id', 'name', 'parent_id')
-        return Response(input)
+    print(external_db)
+    with in_database(external_db, True, True):
+        input2 = Requirement.objects.filter(parent_id=0).values('id', 'name', 'parent_id')
+        if input2:
+            return Response(input2)
+
+
+@api_view(['DELETE'])
+def delete_run(request):
+    run_id = request.data['id']
+    Run.objects.filter(run_id=run_id).delete()
+    RunSet.objects.filter(run_id=run_id).delete()
+    RunSetIo.objects.filter(run_id=run_id).delete()
+    return Response({'status': '204'})
+
+
+@api_view(['GET'])
+def get_run_progress(request):
+    run_id = request.GET.get('run_id')
+    finish_nums_now = Run.objects.filter(run_id=run_id).values('finish_nums')[0]
+    return Response(finish_nums_now)

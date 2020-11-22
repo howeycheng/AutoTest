@@ -240,7 +240,9 @@ class Run(models.Model):
     set_id = models.CharField(max_length=50, blank=True, null=True)
     start = models.DateTimeField(blank=True, null=True)
     finish = models.DateTimeField(blank=True, null=True)
-    status = models.IntegerField(blank=True, null=True)
+    finish_nums = models.IntegerField()
+    nums = models.IntegerField()
+    runner_result = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -258,7 +260,7 @@ class RunSet(models.Model):
     case_state = models.IntegerField(blank=True, null=True)
     set_id = models.CharField(max_length=50, blank=True, null=True)
     run_id = models.CharField(max_length=50, blank=True, null=True)
-    flag = models.PositiveIntegerField(blank=True, null=True)
+    runner_result = models.PositiveIntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -270,7 +272,7 @@ class RunSetIo(models.Model):
     component_name = models.CharField(max_length=200)
     value = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    status = models.IntegerField(blank=True, null=True)
+    runner_result = models.IntegerField(blank=True, null=True)
     case_id = models.CharField(max_length=50, blank=True, null=True)
     run_id = models.CharField(max_length=50, blank=True, null=True)
     order_id = models.SmallIntegerField(blank=True, null=True)

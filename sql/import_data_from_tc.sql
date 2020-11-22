@@ -270,7 +270,7 @@ insert into cases_manager.set_req select * from testcenter_24.set_req;
 
 insert into cases_manager.run_set (project_id, case_name, case_id, set_id, run_id, status) SELECT PROJECT_ID,CASE_CLAZZ,TABLE_NAME,SET_NAME,RUNNAME,FLAG from testcenter_24.allrun_set;
 
-insert into cases_manager.run (project_id, run_id, run_name, runner, set_id, start, finish, status)
+insert into cases_manager.run (project_id, run_id, run_name, runner, set_id, start, finish, runner_result)
 SELECT PROJECT_ID,
        RUNTIMETABLE,
        RUNNAME,
@@ -282,7 +282,7 @@ SELECT PROJECT_ID,
 from testcenter_24.allrun;
 
 insert into cases_manager.run_set (project_id, case_name, case_clazz, case_type, case_id, order_id, case_state, set_id,
-                                   run_id, flag)
+                                   run_id, runner_result)
 SELECT PROJECT_ID,
        CASE_NAME,
        CASE_CLAZZ,
@@ -295,7 +295,7 @@ SELECT PROJECT_ID,
        FLAG
 from testcenter_24.allrun_set
 
-insert into cases_manager.run_set_io (project_id, component_name, value, description, status, case_id, run_id,
+insert into cases_manager.run_set_io (project_id, component_name, value, description, runner_result, case_id, run_id,
                                       order_id)
 SELECT PROJECT_ID,
        NAME,

@@ -1,6 +1,39 @@
-create database cases_manager;
-use cases_manager;
+#!/usr/bin/python3.6
+# -*- coding: utf-8 -*-
+# @Time    : 2020/11/18 14:22
+# @Author  : cheng hao
+# @Email   : howeycheng@163.com
+# @File    : project_database.py
+# @Software: PyCharm
+from django.conf import settings
+import mysql.connector
 
+
+def drop_project_store(database_name):
+    my_db = mysql.connector.connect(
+        host=settings.DATABASES.get('default').get('HOST'),
+        user=settings.DATABASES.get('default').get('USER'),
+        passwd=settings.DATABASES.get('default').get('PASSWORD')
+    )
+    database_name = 'project_unit_' + str(database_name)
+    my_cursor = my_db.cursor()
+    my_cursor.execute("drop database if exists %s" % database_name)
+
+
+def create_project_store(database_name):
+    my_db = mysql.connector.connect(
+        host=settings.DATABASES.get('default').get('HOST'),
+        user=settings.DATABASES.get('default').get('USER'),
+        passwd=settings.DATABASES.get('default').get('PASSWORD')
+    )
+    database_name = 'project_unit_' + str(database_name)
+    my_cursor = my_db.cursor()
+    my_cursor.execute("SHOW DATABASES")
+    if (database_name, ) in my_cursor:
+        return False
+    my_cursor.execute("create database %s" % database_name)
+    my_cursor.execute("use %s" % database_name)
+    sql = """
 /*
  table : cases
  */
@@ -318,3 +351,6 @@ CREATE TABLE run_set_io (
   alter table case_set_io_outparam add index case_id_type (case_id,type);
   alter table run_set_io add index run_id_case_id (run_id,case_id);
   alter table run_set add index run_id (run_id);
+    """
+    my_cursor.execute(sql)
+    return True
