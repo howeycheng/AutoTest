@@ -1,8 +1,9 @@
 # Create your views here.
 import logging
+from uuid import uuid4
 
-from django.db import connection
-from dynamic_db_router import DynamicDbRouter, in_database
+from django.db import connections
+from dynamic_db_router import in_database
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -253,13 +254,15 @@ def get_req_of_case(request):
     :return:
     """
     with in_database(getattr(request, '_external_db', '')):
+        unique_db_id = str(uuid4())
+        connections.databases[unique_db_id] = getattr(request, '_external_db', '')
         global set_temp
         level = request.GET.get('level')  # 级别
         set_id = request.GET.get('set')
         tier = request.GET.get('tier')
         if level == "0":
             set_temp = []
-            with connection.cursor() as cursor:
+            with connections[unique_db_id].cursor() as cursor:
                 cursor.execute(
                     "select distinct cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s",
                     [set_id])
@@ -276,8 +279,12 @@ def get_req_of_case(request):
                         set_temp.append(r[0][0:i + 3])
                     i = i + 3
             req = Cases.objects.filter(tier__in=row_list).values("id", "name", "case_id", "tier")
+            connections[unique_db_id].close()
+            del connections.databases[unique_db_id]
             if req:
                 return Response(req)
+            else:
+                return Response({})
         else:
             set_row = []
             for s in set_temp:
@@ -286,7 +293,7 @@ def get_req_of_case(request):
             req = Cases.objects.filter(tier__in=set_row).values("id", "name", "case_id", "tier")
             if len(req) == 0 and tier[-3:] != "000":
                 tier = tier + "000"
-                with connection.cursor() as cursor:
+                with connections[unique_db_id].cursor() as cursor:
                     cursor.execute(
                         "select cases.id,cases_in_set.name,cases.case_id,cases.tier from cases join cases_in_set on cases.case_id = cases_in_set.case_id where cases_in_set.set_id = %s and cases.tier = %s",
                         [set_id, tier])
@@ -295,6 +302,8 @@ def get_req_of_case(request):
                 for r in row:
                     req_temp.append(dict(zip(['id', 'name', 'case_id', 'tier'], list(r))))
                 req = req_temp
+            connections[unique_db_id].close()
+            del connections.databases[unique_db_id]
             return Response(req)
 
 
@@ -328,7 +337,9 @@ def get_cases_to_run(request):
             case_id = node_list[1]
             tier = node_list[2]
             if case_id == 'null':
-                with connection.cursor() as cursor:
+                unique_db_id = str(uuid4())
+                connections.databases[unique_db_id] = getattr(request, '_external_db', '')
+                with connections[unique_db_id].cursor() as cursor:
                     cursor.execute(
                         "select concat(tier,'000') from set_req where set_id = %s and left(tier,%s) = %s",
                         [set_id, len(tier), tier])
@@ -340,7 +351,7 @@ def get_cases_to_run(request):
         tier_all = list(set(tier_all))
         print(tier_all)
         if len(tier_all) != 0:
-            with connection.cursor() as cursor:
+            with connections[unique_db_id].cursor() as cursor:
                 cursor.execute(
                     "select cases_in_set.case_id from cases_in_set join cases on cases_in_set.case_id =  cases.case_id where set_id = %s and cases.tier in %s",
                     [set_id, tier_all])
@@ -348,6 +359,8 @@ def get_cases_to_run(request):
                 for r in row:
                     cases.append(r[0])
         cases = list(set(cases))
+        connections[unique_db_id].close()
+        del connections.databases[unique_db_id]
         print(cases)
         return Response(cases)
 
