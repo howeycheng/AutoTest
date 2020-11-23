@@ -9,7 +9,7 @@ from django.conf import settings
 import mysql.connector
 
 
-def drop_project_store(database_name):
+def drop_project_db(database_name):
     my_db = mysql.connector.connect(
         host=settings.DATABASES.get('default').get('HOST'),
         user=settings.DATABASES.get('default').get('USER'),
@@ -20,7 +20,7 @@ def drop_project_store(database_name):
     my_cursor.execute("drop database if exists %s" % database_name)
 
 
-def create_project_store(database_name):
+def create_project_db(database_name):
     my_db = mysql.connector.connect(
         host=settings.DATABASES.get('default').get('HOST'),
         user=settings.DATABASES.get('default').get('USER'),

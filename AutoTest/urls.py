@@ -18,7 +18,7 @@ from django.urls import path, include, re_path
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    path('apis/', include('backend.urls')),
+    path('apis/unit/', include('backend.urls')),
     # 用户项目管理相关API
     path('apis/manager/', include('manager.urls')),
     # django管理端API

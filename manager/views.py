@@ -1,15 +1,11 @@
 from django.contrib.auth import authenticate, login, logout
 
-# Create your views here.
-
 # 对应数据库
 from django.contrib.auth.models import User
-from dynamic_db_router import in_database
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from backend.models import Requirement
-from manager.project_database import create_project_store, drop_project_store
+from manager.project_database import create_project_db, drop_project_db
 from manager.models import *
 
 
@@ -65,7 +61,8 @@ def project_user(request):
             project = Project(name=name, description=description, create_user=str(request.user.id))
             project.save()
             project_id = project.project_id
-            create_project_store(project_id)
+            # 创建项目存储数据库
+            create_project_db(project_id)
             return Response({"status": '201', "project_id": project_id})
     elif request.method == 'GET':
         project = Project.objects.filter(create_user=str(request.user.id)).values('project_id', 'name', 'description')
@@ -87,7 +84,7 @@ def project_user_current(request):
 def project_user_one(request):
     if request.method == 'DELETE':
         project_id = request.data['project_id']
-        drop_project_store(project_id)
+        drop_project_db(project_id)
         Project.objects.filter(project_id=project_id).delete()
         return Response({'status': '204'})
     elif request.method == 'POST':
